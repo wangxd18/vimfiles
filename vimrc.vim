@@ -17,7 +17,7 @@ set backspace=indent,eol,start
 set ruler
 set showcmd
 set equalalways
-set foldmethod=indent
+"set foldmethod=indent
 
 if has("win32") || has("win64")
   language messages en.utf-8
@@ -35,7 +35,7 @@ set tabstop=2
 set shiftwidth=2
 set linespace=4
 
-set nowrap
+set wrap
 if exists("&colorcolumn")
   set colorcolumn=85
 endif
@@ -80,7 +80,7 @@ endif
 "窗口
 if has("gui_running")
 	if has("win32") || has("win64")
-    set guifont=Consolas:h12:cANSI
+    set guifont=Monaco:h12:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
     set guifont=Monaco:h14
   else
@@ -173,6 +173,8 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
 
 "surround
 let g:surround_60 = "<\r>" "<
