@@ -85,7 +85,7 @@ if has("gui_running")
     set guifont=Monaco:h14
   else
     if has("gui_gtk2")
-      set guifont=Luxi\ Mono\ 12
+      set guifont=Monaco:h12,Consolas:h12,Luxi\ Mono\ 12
     elseif has("x11")
       " Also for GTK 1
       set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
@@ -225,3 +225,7 @@ nnoremap <leader>yr :YRShow<cr>
 
 "Ack
 nnoremap <leader>a :Ack  .<left><left>
+
+"Syntastic
+" npm install jshint prefered.
+let g:syntastic_check_on_open=1
