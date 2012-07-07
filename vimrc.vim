@@ -101,8 +101,8 @@ if has("gui_running")
     if has("autocmd")
       au GUIEnter * simalt ~x
     endif
-  else
-    set fu
+ " else
+    "set fu
   endif
 else
   set nocursorline
@@ -221,6 +221,7 @@ noremap <silent> <leader>nf :NERDTreeFind<cr>
 noremap <leader>ss :Scratch<cr>
 
 "Yankring
+let g:yankring_history_dir = $TEMP, $HOME/tmp
 nnoremap <leader>yr :YRShow<cr>
 
 "Ack
