@@ -221,7 +221,7 @@ noremap <silent> <leader>nf :NERDTreeFind<cr>
 noremap <leader>ss :Scratch<cr>
 
 "Yankring
-let g:yankring_history_dir = $VIMBACKUP,$TEMP
+let g:yankring_history_dir = $TEMP
 nnoremap <leader>yr :YRShow<cr>
 
 "Ack
