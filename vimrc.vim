@@ -230,3 +230,8 @@ nnoremap <leader>a :Ack  .<left><left>
 "Syntastic
 " npm install jshint prefered.
 let g:syntastic_check_on_open=1
+
+"FuzzyFinder
+nnoremap <silent> <leader>zf :FufFile
+nnoremap <silent> <leader>zb :FufBuffer
+nnoremap <silent> <leader>zd :FufDir
