@@ -6,6 +6,7 @@ set nocompatible
 
 set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
 call pathogen#infect()
+Helptags
 
 noremap , ;
 noremap \ ,
@@ -17,6 +18,7 @@ set backspace=indent,eol,start
 set ruler
 set showcmd
 set equalalways
+set autochdir
 "set foldmethod=indent
 
 if has("win32") || has("win64")
@@ -97,7 +99,7 @@ if has("gui_running")
   set cursorline
 
   "窗口最大化
-  if has("win32")
+  if has("win32") || has("win64")
     if has("autocmd")
       au GUIEnter * simalt ~x
     endif
@@ -141,10 +143,6 @@ if has("autocmd")
     \   write |
     \ endif
 endif
-
-"if has("win32") || has("win64")
-  "set shell=powershell.exe
-"endif
 
 "js语法高亮脚本的设置
 let g:javascript_enable_domhtmlcss=1
@@ -232,6 +230,9 @@ nnoremap <leader>a :Ack  .<left><left>
 let g:syntastic_check_on_open=1
 
 "FuzzyFinder
-nnoremap <silent> <leader>zf :FufFile
-nnoremap <silent> <leader>zb :FufBuffer
-nnoremap <silent> <leader>zd :FufDir
+let g:fuf_modesDisable=[]
+nnoremap <leader>zf :FufFile
+nnoremap <leader>zb :FufBuffer
+nnoremap <leader>zd :FufDir
+nnoremap <silent> <leader>zm :FufMruFile<cr>
+nnoremap <silent> <leader>zr :FufRenewCache<cr>
