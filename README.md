@@ -12,11 +12,20 @@
 
     git clone git://github.com/wangxd18/vimfiles.git
 
-###设置环境变量
+###抓取插件
 
+    git submodule update --init
+
+###设置环境变量
     $MYVIMRC设置为vimfiles/vimrc.vim文件的绝对路径
     $CUSTOMVIMRUNTIME设置为vimfiles目录的绝对路径
     $VIMBACKUP设置为想要Vim存储undo文件的路径，默认为$TEMP
+
+需要安装ack和jshint(syntastic用于做js的语法检查).
+ack的安装参考[这里](https://github.com/mileszs/ack.vim).
+jshint可以通过node.js的npm安装
+
+    npm install -g jshint
 
 ## 升级
 
