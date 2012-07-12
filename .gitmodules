@@ -31,3 +31,27 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/sparkup"]
+	path = bundle/sparkup
+	url = https://github.com/bingaman/vim-sparkup.git
+[submodule "bundle/yankring"]
+	path = bundle/yankring
+	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "bundle/scratch"]
+	path = bundle/scratch
+	url = https://github.com/duff/vim-scratch.git
+[submodule "bundle/snipmate"]
+	path = bundle/snipmate
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "bundle/jsbeautify"]
+	path = bundle/jsbeautify
+	url = https://github.com/wangxd18/jsbeautify.git
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = https://github.com/vim-scripts/ragtag.vim.git
+[submodule "bundle/IndentAnything"]
+	path = bundle/IndentAnything
+	url = https://github.com/vim-scripts/IndentAnything.git

@@ -218,6 +218,9 @@ noremap <silent> <leader>nf :NERDTreeFind<cr>
 "Scratch
 noremap <leader>ss :Scratch<cr>
 
+"jsbeautify
+"keymapp setted as <leader>jf
+
 "Yankring
 let g:yankring_history_dir = $TEMP
 nnoremap <leader>yr :YRShow<cr>
@@ -231,11 +234,13 @@ let g:syntastic_check_on_open=1
 
 "FuzzyFinder
 let g:fuf_modesDisable=[]
-nnoremap <silent> <leader>zf :FufFile<cr>
-nnoremap <silent> <leader>zb :FufBuffer<cr>
-nnoremap <silent> <leader>zd :FufDir<cr>
-nnoremap <silent> <leader>zm :FufMruFile<cr>
-nnoremap <silent> <leader>zr :FufRenewCache<cr>
+nnoremap <silent> <leader>ff :FufFile<cr>
+nnoremap <silent> <leader>fb :FufBuffer<cr>
+nnoremap <silent> <leader>fl :FufLine<cr>
+nnoremap <silent> <leader>fd :FufDir<cr>
+nnoremap <silent> <leader>fm :FufMruFile<cr>
+nnoremap <silent> <leader>fr :FufRenewCache<cr>
 
 "Tabular
 nnoremap <leader>tb :Tabularize /
+
