@@ -102,9 +102,9 @@ if has("gui_running")
   if has("win32") || has("win64")
     if has("autocmd")
       au GUIEnter * simalt ~x
-    endif
  " else
     "set fu
+    endif
   endif
 else
   set nocursorline
