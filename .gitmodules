@@ -55,3 +55,12 @@
 [submodule "bundle/IndentAnything"]
 	path = bundle/IndentAnything
 	url = https://github.com/vim-scripts/IndentAnything.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+[submodule "bundle/mru"]
+	path = bundle/mru
+	url = https://github.com/vim-scripts/mru.vim.git

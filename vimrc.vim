@@ -233,14 +233,19 @@ nnoremap <leader>a :Ack  .<left><left>
 let g:syntastic_check_on_open=1
 
 "FuzzyFinder
-let g:fuf_modesDisable=[]
+"let g:fuf_modesDisable=[]
 nnoremap <silent> <leader>ff :FufFile<cr>
 nnoremap <silent> <leader>fb :FufBuffer<cr>
 nnoremap <silent> <leader>fl :FufLine<cr>
 nnoremap <silent> <leader>fd :FufDir<cr>
-nnoremap <silent> <leader>fm :FufMruFile<cr>
-nnoremap <silent> <leader>fr :FufRenewCache<cr>
+"nnoremap <silent> <leader>fm :FufMruFile<cr>
+"nnoremap <silent> <leader>fr :FufRenewCache<cr>
 
 "Tabular
 nnoremap <leader>tb :Tabularize /
+
+"MRU
+nnoremap <silent> <leader>fm :MRU<cr>
+let MRU_File = $TEMP."/_vim_mru_files"
+let MRU_Max_Entries = 1000
 
