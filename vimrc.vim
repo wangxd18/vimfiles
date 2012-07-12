@@ -147,6 +147,9 @@ endif
 "js语法高亮脚本的设置
 let g:javascript_enable_domhtmlcss=1
 
+"map ctrl+g to G, go to end of file
+nnoremap <C-g> G
+
 inoremap jk <esc>
 "inoremap <esc> <nop>
 "Paste in ic Modes
