@@ -148,7 +148,7 @@ endif
 let g:javascript_enable_domhtmlcss=1
 
 inoremap jk <esc>
-inoremap <esc> <nop>
+"inoremap <esc> <nop>
 "Paste in ic Modes
 noremap! jj <C-r>"
 cnoremap gj <C-r>+
