@@ -236,3 +236,6 @@ nnoremap <silent> <leader>zb :FufBuffer<cr>
 nnoremap <silent> <leader>zd :FufDir<cr>
 nnoremap <silent> <leader>zm :FufMruFile<cr>
 nnoremap <silent> <leader>zr :FufRenewCache<cr>
+
+"Tabular
+nnoremap <leader>tb :Tabularize /

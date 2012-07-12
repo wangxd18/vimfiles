@@ -28,3 +28,6 @@
 [submodule "bundle/CmdlineComplete"]
 	path = bundle/CmdlineComplete
 	url = https://github.com/vim-scripts/CmdlineComplete.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
