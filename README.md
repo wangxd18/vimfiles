@@ -22,7 +22,10 @@
     $VIMBACKUP设置为想要Vim存储undo文件的路径，默认为$TEMP
 
 需要安装ack和jshint(syntastic用于做js的语法检查).
+
 ack的安装参考[这里](https://github.com/mileszs/ack.vim).
+windows上ack安装看[这里](http://blog.csdn.net/sxvbc/article/details/6334855).
+
 jshint可以通过node.js的npm安装
 
     npm install -g jshint
