@@ -176,6 +176,11 @@ vnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>wv <C-w>v<C-w>l
 nnoremap <leader>wc <C-w>c
 nnoremap <leader>wo <C-w>o
+"窗口调整
+nnoremap <leader>wh <C-w>H
+nnoremap <leader>wj <C-w>J
+nnoremap <leader>wk <C-w>K
+nnoremap <leader>wl <C-w>L
 "多窗口移动
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

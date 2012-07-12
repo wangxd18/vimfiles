@@ -22,7 +22,8 @@
     $VIMBACKUP设置为想要Vim存储undo文件的路径，默认为$TEMP
 
 ###默认配置文件修改
-windows为\_vimrc,*nix为~/.vimrc.
+windows为\_vimrc,\*nix为~/.vimrc.
+
     source $MYVIMRC
 
 需要安装ack和jshint(syntastic用于做js的语法检查).
