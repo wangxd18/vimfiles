@@ -231,8 +231,8 @@ let g:syntastic_check_on_open=1
 
 "FuzzyFinder
 let g:fuf_modesDisable=[]
-nnoremap <leader>zf :FufFile
-nnoremap <leader>zb :FufBuffer
-nnoremap <leader>zd :FufDir
+nnoremap <silent> <leader>zf :FufFile<cr>
+nnoremap <silent> <leader>zb :FufBuffer<cr>
+nnoremap <silent> <leader>zd :FufDir<cr>
 nnoremap <silent> <leader>zm :FufMruFile<cr>
 nnoremap <silent> <leader>zr :FufRenewCache<cr>
