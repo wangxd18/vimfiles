@@ -8,21 +8,40 @@
 
 ## 安装
 
-###克隆配置
+###自动安装
+
+#### Linux
+
+在 $HOME 目录下执行以下命令
+
+    git clone git://github.com/wangxd18/vimfiles.git ~/.vim
+    cd ~/.vim && ./install.sh
+
+#### Windows
+
+在 %HOME% 目录下执行
+
+    git clone git://github.com/wangxd18/vimfiles.git %HOME%/vimfiles
+    cd %HOME%/vimfiles && install.bat
+
+
+###手动安装
+
+####克隆配置
 
     git clone git://github.com/wangxd18/vimfiles.git
 
-###抓取插件
+####抓取插件
 
     git submodule update --init
 
-###设置环境变量
+####设置环境变量
     $MYVIMRC设置为vimfiles/vimrc.vim文件的绝对路径
     $CUSTOMVIMRUNTIME设置为vimfiles目录的绝对路径
     $VIMBACKUP设置为想要Vim存储undo文件的路径，默认为$TEMP
 
-###默认配置文件修改
-windows为\_vimrc,\*nix为~/.vimrc.
+####默认配置文件修改
+windows为\_vimrc,Linux为~/.vimrc.
 
     source $MYVIMRC
 
