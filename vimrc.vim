@@ -261,6 +261,6 @@ nnoremap <leader>tb :Tabularize /
 
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
-let MRU_File = $TEMP."/_vim_mru_files"
+let MRU_File = $HOME."/.vim_mru_files"
 let MRU_Max_Entries = 1000
 

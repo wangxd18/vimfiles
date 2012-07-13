@@ -38,6 +38,13 @@ echo "Installing bundles..."
 git submodule update --init
 echo "Bundels installed."
 
+if [ -f ~/.vimrc ]
+then
+    echo "~/.vimrc already exist. Backup it."
+    cp ~/.vimrc ~/.vimrc.bak
+fi
+echo "source $MYVIMRC" > ~/.vimrc
+
 echo "Run 'source ~/.bash_profile' to enable this vim config"
 echo "PS: To ensure 'sudo vim' works fine, edit /etc/sudoers and "
 echo "    modify 'Default env_reset' as 'Default !env_reset'."
