@@ -75,10 +75,15 @@ set whichwrap=b,s,<,>,[,]
 "t_Co means terminal_colors
 if &t_Co > 2 || has("gui_running")
   syntax on
-  colo molokai
   set hlsearch
   "取消高亮
   nnoremap <leader><space> :nohlsearch<cr>
+endif
+
+if has("gui_running")
+  colo molokai
+else
+  colo underwater
 endif
 
 "窗口
