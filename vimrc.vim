@@ -34,9 +34,8 @@ set number
 set numberwidth=4
 set expandtab 
 "set tabstop=2
-"set shiftwidth=2
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=2
 set linespace=4
 
 set wrap
@@ -156,6 +155,7 @@ let g:javascript_enable_domhtmlcss=1
 
 "map ctrl+g to G, go to end of file
 nnoremap <C-g> G
+nnoremap <leader>q :q<cr>
 
 inoremap jk <esc>
 "inoremap <esc> <nop>
