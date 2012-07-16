@@ -1,11 +1,10 @@
 #!/bin/bash
-dir=${pwd}
-bfinder = `echo $HOME/.vim|grep $dir`
+
 #set symbolic link to ~/.vim
-if [ "$bfinder" == "" ]
-then
-  ln -sf $dir ~/.vim
-fi
+#if [ "`echo "$HOME/.vim"|grep ${PWD}`" == "" ]
+#then
+  #ln -sf $dir ~/.vim
+#fi
 
 if [ ! -d ~/.vimbackup ]
 then

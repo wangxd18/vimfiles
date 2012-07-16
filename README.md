@@ -15,7 +15,7 @@
 在 $HOME 目录下执行以下命令
 
     git clone git://github.com/wangxd18/vimfiles.git ~/.vim
-    cd ~/.vim && ./install.sh && source ~/.bash_profile
+    cd ~/.vim && ./install.sh
 
 #### Windows
 
@@ -25,7 +25,7 @@
     cd %HOME%/vimfiles && install.bat
 
 
-###手动安装
+###windows下手动安装
 
 ####克隆配置
 

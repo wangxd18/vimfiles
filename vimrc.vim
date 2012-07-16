@@ -261,7 +261,7 @@ noremap <leader>ss :Scratch<cr>
 if has("win32") || has("win64")
   let g:yankring_history_dir = $VIMBACKUP
 else
-  let g:yankring_history_dir = $HOME/.vimbackup
+  let g:yankring_history_dir = $HOME."/.vimbackup"
 endif
 nnoremap <leader>yr :YRShow<cr>
 
