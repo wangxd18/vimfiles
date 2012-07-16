@@ -1,10 +1,18 @@
+"For Windows:
 "set env_var $MYVIMRC to this file
 "add 'source $MYVIMRC' into the vimrc file
 "set env_var $CUSTOMVIMRUNTIME to the vimfiles path
 "set env_var $VIMBACKUP to backup/undofile path. if not set, the default is $TEMP
+"
+"For Linux:
+"use install.sh to set symbolic link to the vim configuration
+"
 set nocompatible
 
-set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
+if has("win32") || has("win64")
+  set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
+endif
+
 call pathogen#infect()
 Helptags
 
@@ -50,10 +58,15 @@ set wildmode=list:longest
 
 set nobackup
 set writebackup
-set backupdir=$VIMBACKUP,$TEMP,.
 if exists("&undofile")
+  if has("win32") || has("win64")
+    set undodir=$VIMBACKUP,$TEMP,.
+    set backupdir=$VIMBACKUP,$TEMP,.
+  else
+    set undodir=$HOME/.vimbackup
+    set backupdir=$HOME/.vimbackup
+  endif
   set undofile
-  set undodir=$VIMBACKUP,$TEMP
 endif
 set directory=.,$TEMP
 
@@ -108,8 +121,8 @@ if has("gui_running")
   if has("win32") || has("win64")
     if has("autocmd")
       au GUIEnter * simalt ~x
- " else
-    "set fu
+  else
+    set fu
     endif
   endif
 else
@@ -155,7 +168,10 @@ let g:javascript_enable_domhtmlcss=1
 
 "map ctrl+g to G, go to end of file
 nnoremap <C-g> G
-nnoremap <leader>q :q<cr>
+nnoremap <leader>q :close<cr>
+nnoremap <leader>1 :set filetype=javascript<cr>
+nnoremap <leader>2 :set filetype=html<cr>
+nnoremap <leader>3 :set filetype=php<cr>
 
 inoremap jk <esc>
 "inoremap <esc> <nop>
@@ -203,6 +219,11 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+"插入模式下移动光标
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
 "inoremap <up> <nop>
 "inoremap <down> <nop>
 "inoremap <left> <nop>
@@ -237,7 +258,11 @@ noremap <leader>ss :Scratch<cr>
 "keymapp setted as <leader>jf
 
 "Yankring
-let g:yankring_history_dir = $TEMP
+if has("win32") || has("win64")
+  let g:yankring_history_dir = $VIMBACKUP
+else
+  let g:yankring_history_dir = $HOME/.vimbackup
+endif
 nnoremap <leader>yr :YRShow<cr>
 
 "Ack
@@ -261,6 +286,6 @@ nnoremap <leader>tb :Tabularize /
 
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
-let MRU_File = $HOME."/.vim_mru_files"
+let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
 let MRU_Max_Entries = 1000
 

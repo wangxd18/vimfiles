@@ -1,51 +1,26 @@
 #!/bin/bash
-dir=${PWD}
-bfinder=`echo $CUSTOMVIMRUNTIME|grep $dir`
-echo $bfinder
+dir=${pwd}
+bfinder = `echo $HOME/.vim|grep $dir`
+#set symbolic link to ~/.vim
 if [ "$bfinder" == "" ]
 then
-    echo "export CUSTOMVIMRUNTIME=${dir}" >> ~/.bash_profile
-    export CUSTOMVIMRUNTIME=${dir}
+  ln -sf $dir ~/.vim
 fi
 
-bfinder=`echo $MYVIMRC|grep $dir`
-echo $bfinder
-if [ "$bfinder" == "" ]
+if [ ! -d ~/.vimbackup ]
 then
-    echo "export MYVIMRC=${dir}/vimrc.vim" >> ~/.bash_profile
-    export MYVIMRC=${dir}/vimrc.vim
+    mkdir ~/.vimbackup
 fi
-
-bfinder=`echo $VIMBACKUP|grep $dir`
-echo $bfinder
-if [ "$bfinder" == "" ]
-then
-    echo "export VIMBACKUP=~/.vimbackup" >> ~/.bash_profile
-    export VIMBACKUP=~/.vimbackup
-fi
-
-bfinder=`echo $TEMP|grep $dir`
-echo $bfinder
-if [ "$bfinder" == "" ]
-then
-    echo "export TEMP=/tmp" >> ~/.bash_profile
-    export TEMP=/tmp
-fi
-
-mkdir ~/.vimbackup
 
 if [ -f ~/.vimrc ]
 then
     echo "~/.vimrc already exist. Backup it."
     cp ~/.vimrc ~/.vimrc.bak
 fi
-echo "source $MYVIMRC" > ~/.vimrc
+
+echo "source $HOME/.vim/vimrc.vim" > ~/.vimrc
 
 echo "Installing bundles..."
 git submodule update --init
 echo "Bundels installed."
-
-echo "Run 'source ~/.bash_profile' to enable this vim config"
-echo "PS: To ensure 'sudo vim' works fine, edit /etc/sudoers and "
-echo "    modify 'Default env_reset' as 'Default !env_reset'."
 
