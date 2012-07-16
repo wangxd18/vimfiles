@@ -33,7 +33,7 @@
 	url = https://github.com/godlygeek/tabular.git
 [submodule "bundle/sparkup"]
 	path = bundle/sparkup
-	url = https://github.com/bingaman/vim-sparkup.git
+	url = https://github.com/wangxd18/vim-sparkup.git
 [submodule "bundle/yankring"]
 	path = bundle/yankring
 	url = https://github.com/vim-scripts/YankRing.vim.git
