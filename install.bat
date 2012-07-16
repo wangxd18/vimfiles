@@ -17,8 +17,6 @@ set vimbackup="%HOME%\.vimbackup"
 setx VIMBACKUP "%vimbackup%" -m
 echo $VIMBACKUP setted.
 
-git submodule update --init
-
 if exist "%vimbackup%" (
     echo %vimbackup% already exists.
 ) else (
@@ -31,5 +29,7 @@ if exist "%vimrc%" (
     copy "%vimrc%" "%vimrc%.bak"
 )
 echo source $MYVIMRC > %vimrc%
+
+git submodule update --init
 
 pause
