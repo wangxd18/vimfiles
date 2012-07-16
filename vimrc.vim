@@ -40,11 +40,6 @@ set fileformats=dos,unix
 
 set number
 set numberwidth=4
-set expandtab 
-"set tabstop=2
-set tabstop=4
-set shiftwidth=4
-set linespace=4
 
 set wrap
 if exists("&colorcolumn")
@@ -130,6 +125,12 @@ else
 endif
 
 "缩进
+set smarttab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set linespace=4
+set expandtab 
 if has("autocmd")
   filetype plugin indent on
   autocmd BufReadPost *
