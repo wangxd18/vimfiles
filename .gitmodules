@@ -49,9 +49,6 @@
 [submodule "bundle/ragtag"]
 	path = bundle/ragtag
 	url = https://github.com/vim-scripts/ragtag.vim.git
-[submodule "bundle/IndentAnything"]
-	path = bundle/IndentAnything
-	url = https://github.com/vim-scripts/IndentAnything.git
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/vim-scripts/matchit.zip.git
