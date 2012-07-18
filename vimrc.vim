@@ -169,7 +169,7 @@ let g:javascript_enable_domhtmlcss=1
 
 "map ctrl+g to G, go to end of file
 nnoremap <C-g> G
-nnoremap <leader>q :close<cr>
+nnoremap <leader>q :q<cr>
 nnoremap <leader>1 :set filetype=javascript<cr>
 nnoremap <leader>2 :set filetype=html<cr>
 nnoremap <leader>3 :set filetype=php<cr>
