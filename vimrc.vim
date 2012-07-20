@@ -96,12 +96,13 @@ endif
 "窗口
 if has("gui_running")
 	if has("win32") || has("win64")
-    set guifont=Monaco:h12:cANSI,Consolas:h12:cANSI
+    set guifont=Monaco:h11:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
-    set guifont=Monaco:h14
+    set guifont=Monaco:h12
   else
     if has("gui_gtk2")
-      set guifont=Monaco:h12,Consolas:h12,Luxi\ Mono\ 12
+      set guifont=Monaco:h11,Consolas:h11,Luxi\ Mono\ 11
+	  set guifontwide=Microsoft\ Yahei\ 11,WenQuanYi\ Zen\ Hei\ 11
     elseif has("x11")
       " Also for GTK 1
       set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
