@@ -27,7 +27,7 @@ set ruler
 set showcmd
 set equalalways
 set autochdir
-"set foldmethod=indent
+set foldmethod=marker
 
 if has("win32") || has("win64")
   language messages en.utf-8
