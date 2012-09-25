@@ -89,8 +89,6 @@ endif
 
 if has("gui_running")
   colo molokai
-else
-  colo underwater
 endif
 
 "窗口
