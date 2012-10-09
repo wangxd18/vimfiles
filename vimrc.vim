@@ -27,7 +27,7 @@ set ruler
 set showcmd
 set equalalways
 set autochdir
-"set foldmethod=indent
+set foldmethod=indent
 
 if has("win32") || has("win64")
   language messages en.utf-8
@@ -89,8 +89,6 @@ endif
 
 if has("gui_running")
   colo molokai
-else
-  colo underwater
 endif
 
 "窗口
