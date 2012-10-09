@@ -70,7 +70,7 @@ set ignorecase
 "搜索包含大写时，只搜索大写
 set smartcase
 set gdefault
-set incsearch		" do incremental searching
+"set incsearch		" do incremental searching
 set showmatch
 
 "隐藏buffer，而不是unload
@@ -274,20 +274,20 @@ nnoremap <leader>a :Ack  .<left><left>
 " npm install jshint prefered.
 let g:syntastic_check_on_open=1
 
-"FuzzyFinder
-"let g:fuf_modesDisable=[]
-nnoremap <silent> <leader>ff :FufFile<cr>
-nnoremap <silent> <leader>fb :FufBuffer<cr>
-nnoremap <silent> <leader>fl :FufLine<cr>
-nnoremap <silent> <leader>fd :FufDir<cr>
-"nnoremap <silent> <leader>fm :FufMruFile<cr>
-"nnoremap <silent> <leader>fr :FufRenewCache<cr>
-
 "Tabular
 nnoremap <leader>tb :Tabularize /
 
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
 let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
-let MRU_Max_Entries = 1000
+let MRU_Max_Entries = 2000
+
+"FuzzyFinder
+"let g:fuf_modesDisable=[]
+"nnoremap <silent> <leader>ff :FufFile<cr>
+"nnoremap <silent> <leader>fb :FufBuffer<cr>
+"nnoremap <silent> <leader>fl :FufLine<cr>
+"nnoremap <silent> <leader>fd :FufDir<cr>
+"nnoremap <silent> <leader>fm :FufMruFile<cr>
+"nnoremap <silent> <leader>fr :FufRenewCache<cr>
 
