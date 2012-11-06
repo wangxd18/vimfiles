@@ -70,7 +70,7 @@ set ignorecase
 "搜索包含大写时，只搜索大写
 set smartcase
 set gdefault
-"set incsearch		" do incremental searching
+set incsearch		" do incremental searching
 set showmatch
 
 "隐藏buffer，而不是unload
