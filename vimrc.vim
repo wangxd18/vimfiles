@@ -38,6 +38,10 @@ set fileformat=unix
 set fileencodings=utf-8,chinese,latin-1
 set fileformats=dos,unix
 
+set t_Co=256
+colo molokai
+
+
 set number
 set numberwidth=4
 
@@ -85,10 +89,6 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
   "取消高亮
   nnoremap <leader><space> :nohlsearch<cr>
-endif
-
-if has("gui_running")
-  colo molokai
 endif
 
 "窗口
