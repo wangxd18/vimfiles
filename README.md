@@ -64,3 +64,10 @@ jshint可以通过node.js的npm安装
 
     git submodule foreach "git checkout master && git pull"
 
+### 安装新插件
+
+在 <code>.vim</code> 目录下执行
+
+    git submodule add '插件的 github 检出地址' 'bundle/插件名'
+    git submodule init
+    git submodule update

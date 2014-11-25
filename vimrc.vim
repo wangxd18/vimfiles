@@ -13,7 +13,11 @@ if has("win32") || has("win64")
   set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
 endif
 
-call pathogen#infect()
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
 Helptags
 
 noremap , ;
@@ -125,20 +129,11 @@ endif
 
 "缩进
 set smarttab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set linespace=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set linespace=2
 set expandtab 
-if has("autocmd")
-  filetype plugin indent on
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-else
-  set autoindent
-endif
 
 "失去焦点时自动保存
 if has("autocmd")
