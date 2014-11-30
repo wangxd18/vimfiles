@@ -169,6 +169,8 @@ nnoremap <leader>2 :set filetype=html<cr>
 nnoremap <leader>3 :set filetype=php<cr>
 
 inoremap jk <esc>
+nnoremap <tab> %
+vnoremap <tab> %
 "inoremap <esc> <nop>
 "Paste in ic Modes
 noremap! jj <C-r>"
@@ -273,7 +275,7 @@ nnoremap <leader>tb :Tabularize /
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
 let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
-let MRU_Max_Entries = 2000
+let MRU_Max_Entries = 5000
 
 "FuzzyFinder
 "let g:fuf_modesDisable=[]
