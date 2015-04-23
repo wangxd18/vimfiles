@@ -91,6 +91,7 @@ set whichwrap=b,s,<,>,[,]
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  set clipboard=unnamed
   "取消高亮
   nnoremap <leader><space> :nohlsearch<cr>
 endif
@@ -100,7 +101,7 @@ if has("gui_running")
 	if has("win32") || has("win64")
     set guifont=Monaco:h11:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
-    set guifont=Monaco:h12
+    set guifont=Monaco:h14
   else
     if has("gui_gtk2")
       set guifont=Monaco:h11,Consolas:h11,Luxi\ Mono\ 11
@@ -167,10 +168,11 @@ nnoremap <leader>q :q<cr>
 nnoremap <leader>1 :set filetype=javascript<cr>
 nnoremap <leader>2 :set filetype=html<cr>
 nnoremap <leader>3 :set filetype=php<cr>
+nnoremap <leader>4 :set filetype=css<cr>
 
 inoremap jk <esc>
-nnoremap <tab> %
-vnoremap <tab> %
+nmap <tab> %
+vmap <tab> %
 "inoremap <esc> <nop>
 "Paste in ic Modes
 noremap! jj <C-r>"
@@ -221,6 +223,7 @@ inoremap <C-h> <left>
 inoremap <C-j> <down>
 inoremap <C-k> <up>
 inoremap <C-l> <right>
+inoremap <C-z> <esc>zzi
 "inoremap <up> <nop>
 "inoremap <down> <nop>
 "inoremap <left> <nop>

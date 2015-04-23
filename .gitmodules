@@ -64,6 +64,3 @@
 [submodule "bundle/ctags"]
 	path = bundle/ctags
 	url = git://github.com/vim-scripts/ctags.vim.git
-[submodule "bundle/rainbow"]
-	path = bundle/rainbow
-	url = https://github.com/luochen1990/rainbow.git
