@@ -13,9 +13,6 @@
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = git://github.com/plasticboy/vim-markdown.git
@@ -64,3 +61,18 @@
 [submodule "bundle/ctags"]
 	path = bundle/ctags
 	url = git://github.com/vim-scripts/ctags.vim.git
+[submodule "bundle/polyglot"]
+	path = bundle/polyglot
+	url = git@github.com:sheerun/vim-polyglot.git
+[submodule "bundle/YouCompleteMe"]
+	path = bundle/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "bundle/eunuch"]
+	path = bundle/eunuch
+	url = git://github.com/tpope/vim-eunuch.git
+[submodule "bundle/tern"]
+	path = bundle/tern
+	url = git@github.com:marijnh/tern_for_vim.git
+[submodule "bundle/haskell-vim"]
+	path = bundle/haskell-vim
+	url = git@github.com:raichoo/haskell-vim.git

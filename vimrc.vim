@@ -235,6 +235,7 @@ nnoremap k gk
 let g:surround_60 = "<\r>" "<
 let g:surround_40 = "(\r)" "(
 
+
 "bufExplorer
 let g:bufExplorerSortBy='mru'
 let g:bufExplorerSplitRight=0
@@ -268,10 +269,6 @@ nnoremap <leader>yr :YRShow<cr>
 "Ack
 nnoremap <leader>a :Ack  .<left><left>
 
-"Syntastic
-" npm install jshint prefered.
-let g:syntastic_check_on_open=1
-
 "Tabular
 nnoremap <leader>tb :Tabularize /
 
@@ -280,14 +277,6 @@ nnoremap <silent> <leader>fm :MRU<cr>
 let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
 let MRU_Max_Entries = 5000
 
-"FuzzyFinder
-"let g:fuf_modesDisable=[]
-"nnoremap <silent> <leader>ff :FufFile<cr>
-"nnoremap <silent> <leader>fb :FufBuffer<cr>
-"nnoremap <silent> <leader>fl :FufLine<cr>
-"nnoremap <silent> <leader>fd :FufDir<cr>
-"nnoremap <silent> <leader>fm :FufMruFile<cr>
-"nnoremap <silent> <leader>fr :FufRenewCache<cr>
 
 "Rainbow Parentheses Improved
 let g:rainbow_active = 1
@@ -313,3 +302,15 @@ let g:rainbow_conf = {
 \       'css': 0,
 \   }
 \}
+
+"YouCompleteMe options
+let g:ycm_complete_in_comments = 1
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+set completeopt-=preview
+
+"better whitespace
+"auto strip whitespace on save
+let g:strip_whitespace_on_save = 1
+highlight ExtraWhitespace ctermbg = green guibg = #AFFD46i
+
