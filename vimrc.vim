@@ -134,7 +134,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set linespace=2
-set expandtab 
+set expandtab
 
 "失去焦点时自动保存
 if has("autocmd")
@@ -240,17 +240,18 @@ let g:surround_40 = "(\r)" "(
 let g:bufExplorerSortBy='mru'
 let g:bufExplorerSplitRight=0
 let g:bufExplorerSplitVertical=1
-let g:bufExplorerSplitVertSize = 30 
-let g:bufExplorerUseCurrentWindow=1 
+let g:bufExplorerSplitVertSize = 30
+let g:bufExplorerUseCurrentWindow=1
 autocmd BufWinEnter \[Buf\ List\] setl nonumber
 
 "netrw
 let g:netrw_winsize = 30
-noremap <silent> <leader>fe :Sexplore!<cr> 
+noremap <silent> <leader>fe :Sexplore!<cr>
 
 "NERDTree
 noremap <silent> <leader>nt :NERDTree<cr>
 noremap <silent> <leader>nf :NERDTreeFind<cr>
+let NERDTreeQuitOnOpen=1
 
 "Scratch
 noremap <leader>ss :Scratch<cr>
