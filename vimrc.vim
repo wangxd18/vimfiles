@@ -315,3 +315,5 @@ set completeopt-=preview
 let g:strip_whitespace_on_save = 1
 highlight ExtraWhitespace ctermbg = green guibg = #AFFD46i
 
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
