@@ -28,14 +28,12 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'vim-scripts/ctags.vim'
-Plugin 'tpope/vim-eunuch'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline.git'
 Plugin 'raichoo/haskell-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wangxd18/jsbeautify'
 Plugin 'groenewege/vim-less'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'jtratner/vim-flavored-markdown.git'
 Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'vim-scripts/matchit.zip'
@@ -47,9 +45,12 @@ Plugin 'vim-scripts/ragtag.vim'
 Plugin 'duff/vim-scratch'
 Plugin 'wangxd18/snipmate.vim'
 Plugin 'wangxd18/vim-sparkup'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-haml'
+Plugin 'svermeulen/vim-easyclip'
 Plugin 'godlygeek/tabular'
 Plugin 'ramitos/jsctags'
 Plugin 'majutsushi/tagbar'
@@ -57,7 +58,6 @@ Plugin 'vim-scripts/TagHighlight'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mxw/vim-jsx'
-Plugin 'vim-scripts/YankRing.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -121,7 +121,8 @@ set wildignore+=vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
-set wildignore+=node_modules*
+set wildignore+=*node_modules*
+set wildignore+=*bundle*
 set wildignore+=*bower_components*
 set wildignore+=*.png,*.jpg,*.gif,*.ico
 
@@ -259,6 +260,7 @@ vnoremap <leader>g "+
 nnoremap <leader>v V`]
 "快速修改当前目录
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
 "buffer
 nnoremap <leader>bn :bnext<cr>
 vnoremap <leader>bn :bnext<cr>
@@ -273,6 +275,7 @@ vnoremap <leader>bd :bdelete<cr>
 nnoremap <leader>wv <C-w>v<C-w>l
 nnoremap <leader>wc <C-w>c
 nnoremap <leader>wo <C-w>o
+
 "窗口调整
 nnoremap <leader>wh <C-w>H
 nnoremap <leader>wj <C-w>J
@@ -326,7 +329,7 @@ noremap <silent> <leader>fe :Sexplore!<cr>
 "NERDTree
 noremap <silent> <leader>nt :NERDTree<cr>
 noremap <silent> <leader>nf :NERDTreeFind<cr>
-let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen = 1
 
 "Scratch
 noremap <leader>ss :Scratch<cr>
@@ -334,13 +337,18 @@ noremap <leader>ss :Scratch<cr>
 "jsbeautify
 "keymapp setted as <leader>jf
 
-"Yankring
+"EasyClip
+noremap <leader>yr :Yanks<cr>
+let g:EasyClipShareYanks = 1
+let g:EasyClipShareYanksFile = '.easyclip'
 if has("win32") || has("win64")
-  let g:yankring_history_dir = $VIMBACKUP
+  let g:EasyClipShareYanksDirectory = $VIMBACKUP
 else
-  let g:yankring_history_dir = $HOME."/.vimbackup"
+  let g:EasyClipShareYanksDirectory = $HOME."/.vimbackup"
 endif
-nnoremap <leader>yr :YRShow<cr>
+let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
+let g:EasyClipYankHistorySize = 1000
+let g:EasyClipAutoFormat = 1
 
 "Ack
 nnoremap <leader>a :Ack  .<left><left>
@@ -351,7 +359,7 @@ nnoremap <leader>tb :Tabularize /
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
 let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
-let MRU_Max_Entries = 5000
+let MRU_Max_Entries = 2000
 
 
 "Rainbow Parentheses Improved
@@ -403,7 +411,7 @@ let g:syntastic_check_on_wq = 0
 noremap <leader>d :TernDef<cr>
 
 " CtrlP setting
-noremap <leader>p :CtrlP<cr>
+noremap <leader>cp :CtrlPMixed<cr>
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Add some shortcuts for ctags
