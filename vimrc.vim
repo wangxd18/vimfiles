@@ -32,7 +32,6 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline.git'
 Plugin 'raichoo/haskell-vim'
-Plugin 'rust-lang/rust.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wangxd18/jsbeautify'
 Plugin 'groenewege/vim-less'
@@ -216,11 +215,6 @@ set softtabstop=2
 set shiftwidth=2
 set linespace=2
 set expandtab
-
-"失去焦点时自动保存
-if has("autocmd")
-  au FocusLost * :wa
-endif
 
 "自动去除utf8 bom
 if has("autocmd")
