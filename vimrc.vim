@@ -6,15 +6,55 @@
 "
 "For Linux:
 "use install.sh to set symbolic link to the vim configuration
-"
+
 set nocompatible
 
-if has("win32") || has("win64")
-  set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
-endif
+"if has("win32") || has("win64")
+  "set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
+"endif
 
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
+
+" Required Vundle setup
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'vim-scripts/bufexplorer.zip'
+Plugin 'vim-scripts/ctags.vim'
+Plugin 'tpope/vim-eunuch'
+Plugin 'raichoo/haskell-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'wangxd18/jsbeautify'
+Plugin 'groenewege/vim-less'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/mru.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-pathogen'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'vim-scripts/ragtag.vim'
+Plugin 'duff/vim-scratch'
+Plugin 'wangxd18/snipmate.vim'
+Plugin 'wangxd18/vim-sparkup'
+Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+Plugin 'majutsushi/tagbar'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'mxw/vim-jsx'
+Plugin 'vim-scripts/YankRing.vim'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
 syntax on
 filetype plugin indent on
 
