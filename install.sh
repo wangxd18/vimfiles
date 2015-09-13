@@ -20,6 +20,6 @@ fi
 echo "source $HOME/.vim/vimrc.vim" > ~/.vimrc
 
 echo "Installing bundles..."
-git submodule update --init
+vim +PluginInstall +qall
 echo "Bundels installed."
 

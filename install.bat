@@ -3,6 +3,7 @@ echo %~dp0
 set dir=%~dp0
 
 echo This install script works on Windows 7.
+echo Window 8 and Windows 10 are not fully tested.
 
 REM delete \ at end of dir
 if "%dir:~-1%\" == "\\" (
@@ -11,7 +12,7 @@ if "%dir:~-1%\" == "\\" (
 
 setx CUSTOMVIMRUNTIME "%dir%" -m
 echo $CUSTOMVIMRUNTIME setted.
-setx MYVIMRC "%dir%\vimrc.vim" -m 
+setx MYVIMRC "%dir%\vimrc.vim" -m
 echo $MYVIMRC setted.
 set vimbackup="%HOME%\.vimbackup"
 setx VIMBACKUP "%vimbackup%" -m
@@ -30,6 +31,5 @@ if exist "%vimrc%" (
 )
 echo source $MYVIMRC > %vimrc%
 
-git submodule update --init
-
+vim +PluginInstall +qall
 pause
