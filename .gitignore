@@ -1,3 +1,6 @@
 .netrwhist
 *.swp
 bundle/**
+swap/
+undo/
+backup/

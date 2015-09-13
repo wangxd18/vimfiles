@@ -24,28 +24,37 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/syntastic'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'tpope/vim-eunuch'
+Plugin 'kien/ctrlp.vim'
+Plugin 'bling/vim-airline.git'
 Plugin 'raichoo/haskell-vim'
+Plugin 'rust-lang/rust.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wangxd18/jsbeautify'
 Plugin 'groenewege/vim-less'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'jtratner/vim-flavored-markdown.git'
+Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/mru.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-pathogen'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-scripts/ragtag.vim'
 Plugin 'duff/vim-scratch'
 Plugin 'wangxd18/snipmate.vim'
 Plugin 'wangxd18/vim-sparkup'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-haml'
 Plugin 'godlygeek/tabular'
+Plugin 'ramitos/jsctags'
 Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/TagHighlight'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mxw/vim-jsx'
@@ -59,7 +68,7 @@ call vundle#end()            " required
 syntax on
 filetype plugin indent on
 
-Helptags
+"Helptags
 
 noremap , ;
 noremap \ ,
@@ -70,6 +79,10 @@ set history=400
 set backspace=indent,eol,start
 set ruler
 set showcmd
+set showmode
+set gcr=a:blinkon0              "Disable cursor blink
+set visualbell                  "No sounds
+set autoread                    "Reload files changed outside vim
 set equalalways
 set autochdir
 set foldmethod=indent
@@ -91,16 +104,43 @@ set number
 set numberwidth=4
 
 set wrap
+set linebreak
+
 if exists("&colorcolumn")
-  set colorcolumn=85
+  set colorcolumn=80
 endif
 
 "在输入命令时tab列出匹配项目
-set wildmenu
 set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=node_modules*
+set wildignore+=*bower_components*
+set wildignore+=*.png,*.jpg,*.gif,*.ico
+
+
+" ================ Scrolling ========================
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+
+
 "分割窗口时保持相等的宽/高
 
 set nobackup
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 set writebackup
 if exists("&undofile")
   if has("win32") || has("win64")
@@ -146,7 +186,7 @@ if has("gui_running")
   else
     if has("gui_gtk2")
       set guifont=Monaco:h11,Consolas:h11,Luxi\ Mono\ 11
-	  set guifontwide=Microsoft\ Yahei\ 11,WenQuanYi\ Zen\ Hei\ 11
+      set guifontwide=Microsoft\ Yahei\ 11,WenQuanYi\ Zen\ Hei\ 11
     elseif has("x11")
       " Also for GTK 1
       set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
@@ -358,5 +398,19 @@ highlight ExtraWhitespace ctermbg = green guibg = #AFFD46i
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
+" Syntastic settings
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
+" TernJs settings
+noremap <leader>d :TernDef<cr>
+
+" CtrlP setting
+noremap <leader>p :CtrlP<cr>
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" Add some shortcuts for ctags
+map <Leader>tt <esc>:TagbarToggle<cr>
