@@ -74,6 +74,7 @@ noremap \ ,
 let mapleader=";"
 let g:mapleader=";"
 
+
 set history=400
 set backspace=indent,eol,start
 set ruler
@@ -402,8 +403,7 @@ noremap <leader>d :TernDef<cr>
 
 " CtrlP setting
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-noremap <leader>cp :CtrlPMixed<cr>
+let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|images)$',
@@ -413,6 +413,12 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_max_depth = 25
 let g:ctrlp_mruf_max = 500
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtSelectMove("u")': ['<kPageUp>'],
+      \ 'PrtSelectMove("d")': ['<kPageDown>'],
+      \ 'ToggleType(1)':      ['<PageDown>'],
+      \ 'ToggleType(-1)':     ['<PageUp>']
+      \}
 
 " Add some shortcuts for ctags
 map <Leader>tt <esc>:TagbarToggle<cr>
@@ -424,3 +430,47 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$") + 1, a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
+" Restore cursor to file position in previous editing session
+" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+" Tell vim to remember certain things when we exit
+"  '100  :  marks will be remembered for up to 100 previously edited files
+"  "200 :  will save up to 200 lines for each register
+"  :80  :  up to 80 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='100,\"200,:80,%,n~/.viminfo
+
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+if has("folding")
+  function! UnfoldCur()
+    if !&foldenable
+      return
+    endif
+    let cl = line(".")
+    if cl <= 1
+      return
+    endif
+    let cf  = foldlevel(cl)
+    let uf  = foldlevel(cl - 1)
+    let min = (cf > uf ? uf : cf)
+    if min
+      execute "normal!" min . "zo"
+      return 1
+    endif
+  endfunction
+endif
+
+augroup resCur
+  autocmd!
+  if has("folding")
+    autocmd BufWinEnter * if ResCur() | call UnfoldCur() | endif
+  else
+    autocmd BufWinEnter * call ResCur()
+  endif
+augroup END
