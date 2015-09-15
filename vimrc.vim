@@ -31,8 +31,8 @@ Plugin 'vim-scripts/ctags.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
 Plugin 'raichoo/haskell-vim'
+Plugin 'SirVer/ultisnips'
 Plugin 'pangloss/vim-javascript'
-Plugin 'wangxd18/jsbeautify'
 Plugin 'groenewege/vim-less'
 Plugin 'jtratner/vim-flavored-markdown.git'
 Plugin 'nelstrom/vim-markdown-preview'
@@ -43,8 +43,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'vim-scripts/ragtag.vim'
 Plugin 'duff/vim-scratch'
-Plugin 'wangxd18/snipmate.vim'
-Plugin 'wangxd18/vim-sparkup'
+Plugin 'rstacruz/sparkup'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -397,6 +396,8 @@ let g:syntastic_mode_map = {
         \ "passive_filetypes": ["javascript"] }
 noremap <leader>sc :SyntasticCheck<cr>
 noremap <leader>st :SyntasticToggleMode<cr>
+noremap <silent> <leader>ln :lnext<cr>
+noremap <silent> <leader>lp :lprev<cr>
 
 " TernJs settings
 noremap <leader>d :TernDef<cr>
@@ -406,8 +407,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|images)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn|tmp)|dist|images)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|sw.*)$',
 \}
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
@@ -419,6 +420,12 @@ let g:ctrlp_prompt_mappings = {
       \ 'ToggleType(1)':      ['<PageDown>'],
       \ 'ToggleType(-1)':     ['<PageUp>']
       \}
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
 
 " Add some shortcuts for ctags
 map <Leader>tt <esc>:TagbarToggle<cr>
