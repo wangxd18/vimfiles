@@ -450,9 +450,8 @@ noremap <leader>gm :Gmerge  <left>
 noremap <leader>gl :Gpull  <left>
 noremap <leader>gp :Gpush  <left>
 noremap <leader>gst :Gstatus<cr>
-noremap <leader>glg :Glog --graph --decorate --all<cr>
+"noremap <leader>glg :Glog --graph --color --decorate --all<cr>
 noremap <leader>gbl :Gblame<cr>
-
 
 
 "Automatically fitting a quickfix window height
