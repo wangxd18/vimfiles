@@ -445,8 +445,10 @@ map <Leader>tt <esc>:TagbarToggle<cr>
 " Fugitive Git commands
 set diffopt+=vertical
 noremap <leader>gd :Gdiff<cr>
-noremap <leader>gc :Gcommit -a<cr>
-noremap <leader>gm :Gmerge
+noremap <leader>gc :Gcommit -a <cr>
+noremap <leader>gm :Gmerge  <left>
+noremap <leader>gl :Gpull  <left>
+noremap <leader>gp :Gpush  <left>
 noremap <leader>gst :Gstatus<cr>
 noremap <leader>glg :Glog --graph --decorate --all<cr>
 noremap <leader>gbl :Gblame<cr>
