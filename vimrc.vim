@@ -104,7 +104,7 @@ set number
 set numberwidth=4
 
 set wrap
-set linebreak
+set nolinebreak
 
 if exists("&colorcolumn")
   set colorcolumn=80
@@ -244,7 +244,7 @@ endif
 let g:javascript_enable_domhtmlcss=1
 
 "map ctrl+g to G, go to end of file
-nnoremap <C-g> G
+nnoremap <c-g> G
 nnoremap <leader>1 :set filetype=javascript<cr>
 nnoremap <leader>2 :set filetype=html<cr>
 nnoremap <leader>3 :set filetype=php<cr>
@@ -255,8 +255,8 @@ nmap <tab> %
 vmap <tab> %
 "inoremap <esc> <nop>
 "Paste in ic Modes
-noremap! jj <C-r>"
-cnoremap gj <C-r>+
+noremap! jj <c-r>"
+cnoremap gj <c-r>+
 "Global Clipboard
 nnoremap <leader>g "+
 vnoremap <leader>g "+
@@ -269,8 +269,8 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <silent> <leader>q :bdelete<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
 vnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <C-Tab> :bnext<cr>
-vnoremap <silent> <C-Tab> :bnext<cr>
+nnoremap <silent> <c-tab> :bnext<cr>
+vnoremap <silent> <c-tab> :bnext<cr>
 nnoremap <silent> <leader>bp :bprevious<cr>
 vnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bu :bunload<cr>
@@ -279,20 +279,20 @@ nnoremap <silent> <leader>bd :bdelete<cr>
 vnoremap <silent> <leader>bd :bdelete<cr>
 
 "窗口
-nnoremap <leader>wv <C-w>v<C-w>l
-nnoremap <leader>wc <C-w>c
-nnoremap <leader>wo <C-w>o
+nnoremap <leader>wv <c-w>v<c-w>l
+nnoremap <leader>wc <c-w>c
+nnoremap <leader>wo <c-w>o
 
 "窗口调整
-nnoremap <leader>wh <C-w>H
-nnoremap <leader>wj <C-w>J
-nnoremap <leader>wk <C-w>K
-nnoremap <leader>wl <C-w>L
+nnoremap <leader>wh <c-w>H
+nnoremap <leader>wj <c-w>J
+nnoremap <leader>wk <c-w>K
+nnoremap <leader>wl <c-w>L
 "多窗口移动
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 "禁用鼠标
 if has('mouse')
@@ -304,17 +304,19 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 "插入模式下移动光标
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
-inoremap <C-z> <esc>zzi
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
+inoremap <c-h> <left>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
+inoremap <c-z> <esc>zzi
+
 nnoremap j gj
 nnoremap k gk
+
+nnoremap <c-a> ^
+nnoremap <c-e> $
+vnoremap <c-a> ^
+vnoremap <c-e> $
 
 "surround
 let g:surround_60 = "<\r>" "<
@@ -378,8 +380,16 @@ set completeopt-=preview
 
 "better whitespace
 "auto strip whitespace on save
-let g:strip_whitespace_on_save = 1
+"let g:strip_whitespace_on_save = 1
 highlight ExtraWhitespace ctermbg = green guibg = #AFFD46i
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,php,ruby,python,html,css,scss,javascript,jsx autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
@@ -429,6 +439,17 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Add some shortcuts for ctags
 map <Leader>tt <esc>:TagbarToggle<cr>
+
+
+" Fugitive Git commands
+set diffopt+=vertical
+noremap <leader>gd :Gdiff<cr>
+noremap <leader>gc :Gcommit -a<cr>
+noremap <leader>gbl :Gblame<cr>
+noremap <leader>gst :Gstatus<cr>
+noremap <leader>gbl :Gblame<cr>
+
+
 
 "Automatically fitting a quickfix window height
 "http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height

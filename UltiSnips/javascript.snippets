@@ -30,24 +30,40 @@ for (let ${1:i} = ${2:Things}.length - 1; $1 >= 0; -- $1) {
 }
 endsnippet
 
-snippet fun "Function assigned to let"
+snippet fn "Function assigned to let"
 let ${1:fn} = (${2:x}) => {
 	${VISUAL}$0
-}
+};
 endsnippet
 
 snippet f "Arrow Function" w
 (${1:x}) => ${VISUAL}$0
 endsnippet
 
+snippet fb "Arrow Function With Block" w
+(${1:item}) => {
+  ${VISUAL}$0
+}
+endsnippet
+
 snippet .then "Promise then" i
 .then((${1:res}) => {
-		${VISUAL}$0
-		return $1;
+	${VISUAL}$0
+	return $1;
+}, (${2:reason}) => {
+	console.error('${3:promise failed.}', $2);
+	return $2;
+});
+endsnippet
+
+snippet .thenf "Promise then with finally" i
+.then((${1:res}) => {
+	${VISUAL}$0
+	return $1;
 })
 .catch((${2:reason}) => {
-		console.error('${3:promise failed.}', $2);
-		return $2;
+	console.error('${3:promise failed.}', $2);
+	return $2;
 })
 .finally(() => {
 });
@@ -55,7 +71,7 @@ endsnippet
 
 snippet if "if ... then (if)"
 if (${1:true}) {
-	${0:#statements}
+	${VISUAL}$0
 }
 endsnippet
 
@@ -129,15 +145,17 @@ console.groupEnd();
 endsnippet
 
 snippet ci "console.info" b
-console.info(${1:'${2:value}'});
+console.info(${1:'${2:value}'}); // eslint-disable-line
+
 endsnippet
 
 snippet cl "console.log" b
-console.log(${1:'${2:value}'});
+console.log(${1:'${2:value}'}); // eslint-disable-line
 endsnippet
 
 snippet cd "console.debug" b
-console.debug(${1:'${2:value}'});
+console.debug(${1:'${2:value}'}); // eslint-disable-line
+
 endsnippet
 
 snippet cprof "console.profile" b
