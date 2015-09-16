@@ -447,8 +447,8 @@ set diffopt+=vertical
 noremap <leader>gd :Gdiff<cr>
 noremap <leader>gc :Gcommit -a <cr>
 noremap <leader>gm :Gmerge  <left>
-noremap <leader>gl :Gpull  <left><cr>:copen<cr>
-noremap <leader>gp :Gpush  <left><cr>:copen<cr>
+noremap <leader>gl :cclose<cr>:Gpull  <left><cr>:copen<cr>
+noremap <leader>gp :cclose<cr>:Gpush  <left><cr>:copen<cr>
 noremap <leader>gst :Gstatus<cr>
 "noremap <leader>glg :Glog --graph --color --decorate --all<cr>
 noremap <leader>gbl :Gblame<cr>
