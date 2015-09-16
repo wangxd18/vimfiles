@@ -34,6 +34,7 @@ Plugin 'raichoo/haskell-vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'pangloss/vim-javascript'
 Plugin 'groenewege/vim-less'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'jtratner/vim-flavored-markdown.git'
 Plugin 'nelstrom/vim-markdown-preview'
 Plugin 'vim-scripts/matchit.zip'
@@ -177,7 +178,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 "取消高亮
-nnoremap <silent> <leader><space> :nohlsearch<cr>:lclose<cr>:cclose<cr>
+nnoremap <silent> <leader><space> :nohlsearch<cr>:lclose<cr>:cclose<cr>:pclose<cr>
 
 "窗口
 if has("gui_running")
@@ -445,8 +446,9 @@ map <Leader>tt <esc>:TagbarToggle<cr>
 set diffopt+=vertical
 noremap <leader>gd :Gdiff<cr>
 noremap <leader>gc :Gcommit -a<cr>
-noremap <leader>gbl :Gblame<cr>
+noremap <leader>gm :Gmerge
 noremap <leader>gst :Gstatus<cr>
+noremap <leader>glg :Glog --graph --decorate --all<cr>
 noremap <leader>gbl :Gblame<cr>
 
 
