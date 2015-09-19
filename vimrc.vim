@@ -60,7 +60,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'svermeulen/vim-easyclip'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TagHighlight'
-Plug 'Yggdroot/indentLine'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'embear/vim-localvimrc'
 Plug 'othree/html5.vim', {'for': 'html'}
 Plug 'mxw/vim-jsx', {'for': 'javascript'}
@@ -366,10 +366,6 @@ vnoremap <c-e> $
 "surround
 let g:surround_60 = "<\r>" "<
 let g:surround_40 = "(\r)" "(
-
-" indentline
-let g:indentLine_char = '│'
-noremap <leader>ilt :IndentLinesToggle<cr>
 
 " local vimrc
 let g:local_vimrc = {'names':['.vimrc'],'hash_fun':'LVRHashOfFile'}
