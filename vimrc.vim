@@ -23,6 +23,7 @@ else
 endif
 
 Plug 'tomasr/molokai'
+Plug 'gosukiwi/vim-atom-dark'
 Plug 'altercation/vim-colors-solarized'
 Plug 'w0ng/vim-hybrid'
 Plug 'rking/ag.vim'
@@ -31,7 +32,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/ctags.vim'
 Plug 'Raimondi/delimitMate'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'godlygeek/tabular'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'raichoo/haskell-vim'
@@ -48,9 +49,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ragtag.vim'
 Plug 'duff/vim-scratch'
 Plug 'rstacruz/sparkup'
-Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -61,13 +60,16 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'svermeulen/vim-easyclip'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TagHighlight'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
-Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
-Plug 'ramitos/jsctags', {'for': ['javascript', 'html']}
-Plug 'mxw/vim-jsx', {'for': ['javascript', 'html']}
+Plug 'Yggdroot/indentLine'
+Plug 'embear/vim-localvimrc'
+Plug 'othree/html5.vim', {'for': 'html'}
+Plug 'mxw/vim-jsx', {'for': 'javascript'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
+Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
+Plug 'ramitos/jsctags', {'for': 'javascript'}
 
-"Plug 'embear/vim-localvimrc'
+"Plug 'junegunn/vim-easy-align'
 
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
@@ -98,7 +100,6 @@ noremap \ ,
 let mapleader=";"
 let g:mapleader=";"
 
-
 set history=400
 set backspace=indent,eol,start
 set ruler
@@ -110,6 +111,8 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set equalalways
 set autochdir
+
+au BufRead,BufNewFile *.mustache set filetype=html
 
 " fold setting
 set foldmethod=indent
@@ -290,9 +293,11 @@ nnoremap <leader>2 :set filetype=html<cr>
 nnoremap <leader>3 :set filetype=php<cr>
 nnoremap <leader>4 :set filetype=css<cr>
 
+map Q <Nop>
+
 inoremap jk <esc>
-nnoremap <tab> %
-vnoremap <tab> %
+nmap <tab> %
+vmap <tab> %
 "inoremap <esc> <nop>
 "Paste in ic Modes
 noremap! jj <c-r>"
@@ -362,12 +367,19 @@ vnoremap <c-e> $
 let g:surround_60 = "<\r>" "<
 let g:surround_40 = "(\r)" "(
 
+" indentline
+let g:indentLine_char = '│'
+noremap <leader>ilt :IndentLinesToggle<cr>
+
+" local vimrc
+let g:local_vimrc = {'names':['.vimrc'],'hash_fun':'LVRHashOfFile'}
+
 "bufExplorer
-let g:bufExplorerSortBy='mru'
-let g:bufExplorerSplitRight=0
-let g:bufExplorerSplitVertical=1
-let g:bufExplorerSplitVertSize = 30
-let g:bufExplorerUseCurrentWindow=1
+let g:bufExplorerSortBy           = 'mru'
+let g:bufExplorerSplitRight       = 0
+let g:bufExplorerSplitVertical    = 1
+let g:bufExplorerSplitVertSize    = 30
+let g:bufExplorerUseCurrentWindow = 1
 autocmd BufWinEnter \[Buf\ List\] setl nonumber
 
 "netrw
@@ -386,17 +398,17 @@ noremap <leader>ss :Scratch<cr>
 
 "EasyClip
 noremap <leader>yr :Yanks<cr>
-let g:EasyClipShareYanks = 1
-let g:EasyClipShareYanksFile = '.easyclip'
+let g:EasyClipShareYanks                   = 1
+let g:EasyClipShareYanksFile               = '.easyclip'
+let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
+let g:EasyClipYankHistorySize              = 1000
+let g:EasyClipAutoFormat                   = 1
+let g:EasyClipUsePasteToggleDefaults       = 0
 if has("win32") || has("win64")
   let g:EasyClipShareYanksDirectory = $VIMBACKUP
 else
   let g:EasyClipShareYanksDirectory = $HOME."/.vimbackup"
 endif
-let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
-let g:EasyClipYankHistorySize = 1000
-let g:EasyClipAutoFormat = 1
-let g:EasyClipUsePasteToggleDefaults = 0
 
 "Ag
 "let g:ag_prg="ag --vimgrep --smart-case"
@@ -423,18 +435,20 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
+
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 autocmd FileType c,cpp,java,php,ruby,python,html,css,scss,javascript,jsx autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " Syntastic settings
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers      = ['eslint']
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
+let g:syntastic_loc_list_height          = 5
 let g:syntastic_mode_map = {
         \ "mode": "passive",
         \ "active_filetypes": ["ruby", "php"],
@@ -457,8 +471,8 @@ let g:ctrlp_custom_ignore = {
 \}
 let g:ctrlp_by_filename = 1
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_depth = 25
-let g:ctrlp_mruf_max = 500
+let g:ctrlp_max_depth   = 25
+let g:ctrlp_mruf_max    = 500
 let g:ctrlp_prompt_mappings = {
       \ 'PrtSelectMove("u")': ['<kPageUp>'],
       \ 'PrtSelectMove("d")': ['<kPageDown>'],
@@ -475,6 +489,11 @@ let g:UltiSnipsEditSplit="vertical"
 " Add some shortcuts for ctags
 map <Leader>tt <esc>:TagbarToggle<cr>
 
+"Tabular
+nnoremap <leader>tb :Tabularize /=
+vnoremap <leader>tb :Tabularize /=
+nnoremap <leader>tbz :Tabularize /:\zs<left><left><left>
+vnoremap <leader>tbz :Tabularize /:\zs<left><left><left>
 
 " Fugitive Git commands
 set diffopt+=vertical
