@@ -20,6 +20,6 @@ fi
 echo "source $HOME/.vim/vimrc.vim" > ~/.vimrc
 
 echo "Installing bundles..."
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 echo "Bundels installed."
 

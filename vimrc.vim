@@ -14,58 +14,82 @@ set nocompatible
 "endif
 
 
-" Required Vundle setup
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" vim-plug
+" https://github.com/junegunn/vim-plug
+if has("win32") || has("win64")
+  call plug#begin('~/vimfiles/bundle')
+else
+  call plug#begin('~/.vim/bundle')
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
+Plug 'w0ng/vim-hybrid'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-scripts/bufexplorer.zip'
+Plug 'vim-scripts/ctags.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'raichoo/haskell-vim'
+Plug 'SirVer/ultisnips'
+Plug 'groenewege/vim-less'
+Plug 'airblade/vim-gitgutter'
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'nelstrom/vim-markdown-preview'
+Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/mru.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-scripts/ragtag.vim'
+Plug 'duff/vim-scratch'
+Plug 'rstacruz/sparkup'
+Plug 'junegunn/vim-easy-align'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-dispatch'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'svermeulen/vim-easyclip'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/TagHighlight'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'html']}
+Plug 'jelera/vim-javascript-syntax', {'for': ['javascript', 'html']}
+Plug 'ramitos/jsctags', {'for': ['javascript', 'html']}
+Plug 'mxw/vim-jsx', {'for': ['javascript', 'html']}
 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'vim-scripts/bufexplorer.zip'
-Plugin 'vim-scripts/ctags.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'raichoo/haskell-vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'pangloss/vim-javascript'
-Plugin 'groenewege/vim-less'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'jtratner/vim-flavored-markdown.git'
-Plugin 'nelstrom/vim-markdown-preview'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/mru.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'vim-scripts/ragtag.vim'
-Plugin 'duff/vim-scratch'
-Plugin 'rstacruz/sparkup'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-haml'
-Plugin 'svermeulen/vim-easyclip'
-Plugin 'godlygeek/tabular'
-Plugin 'ramitos/jsctags'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/TagHighlight'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'mxw/vim-jsx'
+"Plug 'embear/vim-localvimrc'
 
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+function! InstallTern(info)
+  if a:info.status == 'installed' || a:info.force
+    !npm install
+  endif
+endfunction
+Plug 'marijnh/tern_for_vim' , { 'do': function('InstallTern') }
 
+" Add plugins to &runtimepath
+call plug#end()
 
-syntax on
-filetype plugin indent on
 
 "Helptags
 
@@ -86,7 +110,18 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set equalalways
 set autochdir
+
+" fold setting
 set foldmethod=indent
+set foldlevel=20
+set foldlevelstart=20
+" Note, perl automatically sets foldmethod in the syntax file
+autocmd Syntax c,cpp,vim,xml,html,xhtml, setlocal foldmethod=syntax
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
+
+" JavaScript folding
+au FileType javascript call JavaScriptFold()
+
 
 if has("win32") || has("win64")
   language messages en.utf-8
@@ -98,7 +133,11 @@ set fileencodings=utf-8,chinese,latin-1
 set fileformats=dos,unix
 
 set t_Co=256
-colo molokai
+
+
+" colorscheme
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
 
 
 set number
@@ -123,6 +162,7 @@ set wildignore+=vendor/cache/**
 set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
+set wildignore+=.tmp/**
 set wildignore+=*node_modules*
 set wildignore+=*bundle*
 set wildignore+=*bower_components*
@@ -172,12 +212,11 @@ set whichwrap=b,s,<,>,[,]
 
 "t_Co means terminal_colors
 if &t_Co > 2 || has("gui_running")
-  syntax on
   set hlsearch
   set clipboard=unnamed
 endif
 
-"取消高亮
+"取消高亮, 同时关闭各种小窗口
 nnoremap <silent> <leader><space> :nohlsearch<cr>:lclose<cr>:cclose<cr>:pclose<cr>
 
 "窗口
@@ -252,8 +291,8 @@ nnoremap <leader>3 :set filetype=php<cr>
 nnoremap <leader>4 :set filetype=css<cr>
 
 inoremap jk <esc>
-nmap <tab> %
-vmap <tab> %
+nnoremap <tab> %
+vnoremap <tab> %
 "inoremap <esc> <nop>
 "Paste in ic Modes
 noremap! jj <c-r>"
@@ -336,8 +375,7 @@ let g:netrw_winsize = 30
 noremap <silent> <leader>fe :Sexplore!<cr>
 
 "NERDTree
-noremap <silent> <leader>nt :NERDTree<cr>
-noremap <silent> <leader>nf :NERDTreeFind<cr>
+noremap <silent> <leader>nt :NERDTreeToggle<cr>
 let NERDTreeQuitOnOpen = 1
 
 "Scratch
@@ -358,15 +396,11 @@ endif
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 let g:EasyClipYankHistorySize = 1000
 let g:EasyClipAutoFormat = 1
+let g:EasyClipUsePasteToggleDefaults = 0
 
-"Ack
-nnoremap <leader>a :Ack  .<left><left>
-
-"Airline
-"let g:airline#extensions#tabline#enabled = 1
-
-"Tabular
-nnoremap <leader>tb :Tabularize /
+"Ag
+"let g:ag_prg="ag --vimgrep --smart-case"
+nnoremap <leader>a :Ag  <left>
 
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>

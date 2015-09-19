@@ -42,7 +42,7 @@
 ####抓取插件
 
 ```
-    vim +PluginInstall +qall
+    vim +PlugInstall +qall
 ```
 
 ####设置环境变量
@@ -57,10 +57,9 @@ windows为\_vimrc,Linux为~/.vimrc.
     source $MYVIMRC
 ```
 
-需要安装ack和~~jshint(syntastic用于做js的语法检查)~~ eslint(已取代jshint).
+需要安装ag和eslint(syntastic用于做js的语法检查)
 
-ack的安装参考[这里](https://github.com/mileszs/ack.vim).
-windows上ack安装看[这里](http://blog.csdn.net/sxvbc/article/details/6334855).
+ag的安装参考[这里](https://github.com/rking/ag.vim).
 
 eslint可以通过node.js的npm安装
 
@@ -85,11 +84,13 @@ Tagbar依赖[Exuberant Ctags](http://ctags.sourceforge.net/), 将Ctags的压缩�
 打开Vim，运行
 
 ```
-    :PluginUpdate
+    :PlugUpgrade
+    :PlugUpdate
 ```
 
 ### 安装新插件
 
-插件host在github上时，在 <code>vimrc.vim</code> 的Vundle插件语句中加入 <code>author/reponame</code> 即可.
+插件host在github上时，在 <code>vimrc.vim</code> 的vim-plug插件语句中加入 <code>author/reponame</code> 即可, e.g. <code>tpope/vim-fugitive</code>.
 
-更详细的选项参见[Vundle使用说明](https://github.com/VundleVim/Vundle.vim)。
+更详细的选项参见[vim-plug](https://github.com/junegunn/vim-plug)。
+

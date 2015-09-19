@@ -30,25 +30,31 @@ for (let ${1:i} = ${2:Things}.length - 1; $1 >= 0; -- $1) {
 }
 endsnippet
 
+snippet l "Lambda in ES6: Arrow Function" w
+(${1:x}) => $1 ${VISUAL}$0
+endsnippet
+
 snippet fn "Function assigned to let"
 let ${1:fn} = (${2:x}) => {
 	${VISUAL}$0
 };
 endsnippet
 
-snippet f "Arrow Function" w
-(${1:x}) => ${VISUAL}$0
+snippet fun "JavaScript Function"
+functio ${1:fn} (${2:x}) {
+	$2 ${VISUAL}$0
+}
 endsnippet
 
-snippet fb "Arrow Function With Block" w
+snippet f "Arrow Function With Block" w
 (${1:item}) => {
-  ${VISUAL}$0
+	$1 ${VISUAL}$0
 }
 endsnippet
 
 snippet .then "Promise then" i
 .then((${1:res}) => {
-	${VISUAL}$0
+	$1 ${VISUAL}$0
 	return $1;
 }, (${2:reason}) => {
 	console.error('${3:promise failed.}', $2);
@@ -58,7 +64,7 @@ endsnippet
 
 snippet .thenf "Promise then with finally" i
 .then((${1:res}) => {
-	${VISUAL}$0
+	$1 ${VISUAL}$0
 	return $1;
 })
 .catch((${2:reason}) => {
@@ -89,10 +95,10 @@ snippet iife "Immediately-Invoked Function Expression (iife)"
 })(${2:$1});
 endsnippet
 
-snippet timeout "setTimeout function"
-setTimeout(function() {
+snippet timeout "$timeout function"
+$timeout(() => {
 	${VISUAL}$0
-}${2:.bind(${3:this})}, ${1:10});
+}, ${1:13});
 endsnippet
 
 snippet fi "for prop in obj using hasOwnProperty" b
@@ -105,7 +111,7 @@ endsnippet
 
 snippet fo "for .. of iteration" b
 for (${1} of ${2}){
-	${1}
+	$1
 	${VISUAL}$0
 }
 endsnippet
