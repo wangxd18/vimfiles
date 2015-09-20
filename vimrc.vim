@@ -22,11 +22,17 @@ else
   call plug#begin('~/.vim/bundle')
 endif
 
+Plug 'yosiat/oceanic-next-vim'
 Plug 'tomasr/molokai'
+Plug 'goatslacker/mango.vim'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'mhumeSF/one-dark.vim'
+Plug 'scheakur/vim-scheakur'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'altercation/vim-colors-solarized'
 Plug 'w0ng/vim-hybrid'
 Plug 'rking/ag.vim'
+Plug 'Shougo/vimshell.vim'
 Plug 'scrooloose/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/bufexplorer.zip'
@@ -61,14 +67,20 @@ Plug 'svermeulen/vim-easyclip'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TagHighlight'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'embear/vim-localvimrc'
-Plug 'othree/html5.vim', {'for': 'html'}
-Plug 'mxw/vim-jsx', {'for': 'javascript'}
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'jelera/vim-javascript-syntax', {'for': 'javascript'}
-Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
-Plug 'ramitos/jsctags', {'for': 'javascript'}
 
+" html
+Plug 'othree/html5.vim'
+
+" javascript
+Plug 'pangloss/vim-javascript'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'vim-scripts/JavaScript-Indent'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'ramitos/jsctags'
+Plug 'mxw/vim-jsx'
+Plug 'burnettk/vim-angular'
+
+" not using
 "Plug 'junegunn/vim-easy-align'
 
 function! BuildYCM(info)
@@ -94,6 +106,8 @@ call plug#end()
 
 
 "Helptags
+
+cd ~/local/
 
 noremap , ;
 noremap \ ,
@@ -122,9 +136,6 @@ set foldlevelstart=20
 autocmd Syntax c,cpp,vim,xml,html,xhtml, setlocal foldmethod=syntax
 autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
-" JavaScript folding
-au FileType javascript call JavaScriptFold()
-
 
 if has("win32") || has("win64")
   language messages en.utf-8
@@ -139,8 +150,11 @@ set t_Co=256
 
 
 " colorscheme
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+set background=dark
+"colorscheme molokai
+"let g:hybrid_use_Xresources = 1
+"colorscheme hybrid
+colorscheme OceanicNext
 
 
 set number
@@ -182,6 +196,7 @@ set sidescroll=1
 "分割窗口时保持相等的宽/高
 
 set nobackup
+set noswapfile
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
@@ -227,7 +242,7 @@ if has("gui_running")
 	if has("win32") || has("win64")
     set guifont=Monaco:h11:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
-    set guifont=Monaco:h14
+    set guifont=Monaco:h13
   else
     if has("gui_gtk2")
       set guifont=Monaco:h11,Consolas:h11,Luxi\ Mono\ 11
@@ -240,7 +255,7 @@ if has("gui_running")
 
   "去掉工具栏
   set guioptions=e
-  set cursorline
+  "set cursorline
 
   "窗口最大化
   if has("win32") || has("win64")
@@ -365,9 +380,6 @@ vnoremap <c-e> $
 let g:surround_60 = "<\r>" "<
 let g:surround_40 = "(\r)" "(
 
-" local vimrc
-let g:local_vimrc = {'names':['.vimrc'],'hash_fun':'LVRHashOfFile'}
-
 " Matchit
 " mapping <tab> to % in visual mode
 nmap <tab> %
@@ -414,6 +426,10 @@ endif
 "let g:ag_prg="ag --vimgrep --smart-case"
 nnoremap <leader>a :Ag  <left>
 
+"VimShell
+nnoremap <silent> <leader>vs :VimShell<cr>
+
+
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
 let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
@@ -459,7 +475,8 @@ noremap <silent> <leader>ln :lnext<cr>
 noremap <silent> <leader>lp :lprev<cr>
 
 " TernJs settings
-noremap <leader>d :TernDef<cr>
+noremap <leader>td :TernDef<cr>
+noremap <leader>tr :TernRefs<cr>
 
 " CtrlP setting
 let g:ctrlp_map = '<c-p>'
@@ -485,6 +502,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
+
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'angularjs,angularuirouter,react'
 
 " Add some shortcuts for ctags
 map <Leader>tt <esc>:TagbarToggle<cr>
