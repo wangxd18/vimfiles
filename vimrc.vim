@@ -36,7 +36,7 @@ Plug 'godlygeek/tabular'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'raichoo/haskell-vim'
-Plug 'SirVer/ultisnips'
+Plug 'wangxd18/ultisnips'
 Plug 'groenewege/vim-less'
 Plug 'airblade/vim-gitgutter'
 Plug 'jtratner/vim-flavored-markdown'
@@ -296,8 +296,6 @@ nnoremap <leader>4 :set filetype=css<cr>
 map Q <Nop>
 
 inoremap jk <esc>
-nmap <tab> %
-vmap <tab> %
 "inoremap <esc> <nop>
 "Paste in ic Modes
 noremap! jj <c-r>"
@@ -369,6 +367,12 @@ let g:surround_40 = "(\r)" "(
 
 " local vimrc
 let g:local_vimrc = {'names':['.vimrc'],'hash_fun':'LVRHashOfFile'}
+
+" Matchit
+" mapping <tab> to % in visual mode
+nmap <tab> %
+vmap <tab> %
+omap <tab> %
 
 "bufExplorer
 let g:bufExplorerSortBy           = 'mru'
