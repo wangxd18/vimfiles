@@ -16,8 +16,6 @@ set nocompatible
 
 " vim-plug
 " https://github.com/junegunn/vim-plug
-let g:plug_window=""
-
 if has("win32") || has("win64")
   call plug#begin('~/vimfiles/bundle')
 else
