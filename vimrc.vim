@@ -22,15 +22,15 @@ else
   call plug#begin('~/.vim/bundle')
 endif
 
-Plug 'yosiat/oceanic-next-vim'
-Plug 'tomasr/molokai'
-Plug 'goatslacker/mango.vim'
+"color schemes
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'mhumeSF/one-dark.vim'
-Plug 'scheakur/vim-scheakur'
-Plug 'gosukiwi/vim-atom-dark'
-Plug 'altercation/vim-colors-solarized'
-Plug 'w0ng/vim-hybrid'
+"Plug 'tomasr/molokai'
+"Plug 'yosiat/oceanic-next-vim'
+"Plug 'mhumeSF/one-dark.vim'
+"Plug 'gosukiwi/vim-atom-dark'
+"Plug 'altercation/vim-colors-solarized'
+
+"vim functional plugins
 Plug 'rking/ag.vim'
 Plug 'Shougo/vimshell.vim'
 Plug 'scrooloose/syntastic'
@@ -51,7 +51,6 @@ Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/mru.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/ragtag.vim'
 Plug 'duff/vim-scratch'
 Plug 'rstacruz/sparkup'
@@ -59,7 +58,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'terryma/vim-multiple-cursors'
@@ -71,16 +69,21 @@ Plug 'nathanaelkane/vim-indent-guides'
 " html
 Plug 'othree/html5.vim'
 
+"css
+Plug 'hail2u/vim-css3-syntax'
+Plug 'tpope/vim-haml'
+
 " javascript
-Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'vim-scripts/JavaScript-Indent'
+"Plug 'jelera/vim-javascript-syntax'
+Plug 'wangxd18/JavaScript-Indent'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ramitos/jsctags'
 Plug 'mxw/vim-jsx'
 Plug 'burnettk/vim-angular'
+Plug 'pangloss/vim-javascript'
 
 " not using
+"Plug 'sheerun/vim-polyglot' " polyglot is breaking some filetype syntax
 "Plug 'junegunn/vim-easy-align'
 
 function! BuildYCM(info)
@@ -107,7 +110,10 @@ call plug#end()
 
 "Helptags
 
-cd ~/local/
+if has("mac")
+  " ~/local/chelaile as default workspace
+  cd ~/local/chelaile
+endif
 
 noremap , ;
 noremap \ ,
@@ -153,8 +159,8 @@ set t_Co=256
 set background=dark
 "colorscheme molokai
 "let g:hybrid_use_Xresources = 1
-"colorscheme hybrid
-colorscheme OceanicNext
+"colorscheme OceanicNext
+colorscheme hybrid_material
 
 
 set number
@@ -240,13 +246,13 @@ nnoremap <silent> <leader><space> :nohlsearch<cr>:lclose<cr>:cclose<cr>:pclose<c
 "窗口
 if has("gui_running")
 	if has("win32") || has("win64")
-    set guifont=Monaco:h11:cANSI,Consolas:h12:cANSI
+    set guifont=Monaco:h12:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
-    set guifont=Monaco:h13
+    set guifont=Monaco:h14
   else
     if has("gui_gtk2")
-      set guifont=Monaco:h11,Consolas:h11,Luxi\ Mono\ 11
-      set guifontwide=Microsoft\ Yahei\ 11,WenQuanYi\ Zen\ Hei\ 11
+      set guifont=Monaco:h12,Consolas:h12
+      set guifontwide=Microsoft\ Yahei\ 12,WenQuanYi\ Zen\ Hei\ 12
     elseif has("x11")
       " Also for GTK 1
       set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
@@ -279,6 +285,9 @@ set expandtab
 
 " display the status line always
 set laststatus=2
+" reduce delay when leaving insert mode
+set ttimeoutlen=50
+
 
 "自动去除utf8 bom
 if has("autocmd")
@@ -399,7 +408,7 @@ let g:netrw_winsize = 30
 noremap <silent> <leader>fe :Sexplore!<cr>
 
 "NERDTree
-noremap <silent> <leader>nt :NERDTreeToggle<cr>
+noremap <silent> <leader>nt :NERDTree<cr>
 let NERDTreeQuitOnOpen = 1
 
 "Scratch
@@ -419,15 +428,15 @@ let g:EasyClipUsePasteToggleDefaults       = 0
 if has("win32") || has("win64")
   let g:EasyClipShareYanksDirectory = $VIMBACKUP
 else
-  let g:EasyClipShareYanksDirectory = $HOME."/.vimbackup"
+  let g:EasyClipShareYanksDirectory = "~/.vimbackup"
 endif
+
+" Airline
+let g:airline_theme = 'hybrid'
 
 "Ag
 "let g:ag_prg="ag --vimgrep --smart-case"
 nnoremap <leader>a :Ag  <left>
-
-"VimShell
-nnoremap <silent> <leader>vs :VimShell<cr>
 
 
 "MRU
@@ -467,7 +476,6 @@ let g:syntastic_check_on_wq              = 0
 let g:syntastic_loc_list_height          = 5
 let g:syntastic_mode_map = {
         \ "mode": "passive",
-        \ "active_filetypes": ["ruby", "php"],
         \ "passive_filetypes": ["javascript"] }
 noremap <leader>sc :SyntasticCheck<cr>
 noremap <leader>st :SyntasticToggleMode<cr>
