@@ -452,10 +452,9 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 set completeopt-=preview
 
 " delimitMate
-" enable expanision
+" enable expansion
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 2
-
 
 "better whitespace
 "auto strip whitespace on save
