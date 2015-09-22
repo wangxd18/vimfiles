@@ -71,7 +71,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 " html
 Plug 'othree/html5.vim'
 
-"css
+" css, scss
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-haml'
 
@@ -84,7 +84,6 @@ Plug 'pangloss/vim-javascript'
 
 " not using
 "Plug 'jelera/vim-javascript-syntax'
-"Plug 'wangxd18/JavaScript-Indent'
 "Plug 'sheerun/vim-polyglot' " polyglot is breaking some filetype syntax
 "Plug 'junegunn/vim-easy-align'
 
@@ -451,6 +450,12 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 set completeopt-=preview
+
+" delimitMate
+" enable expanision
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 2
+
 
 "better whitespace
 "auto strip whitespace on save
