@@ -16,6 +16,8 @@ set nocompatible
 
 " vim-plug
 " https://github.com/junegunn/vim-plug
+let g:plug_window="topleft new"
+
 if has("win32") || has("win64")
   call plug#begin('~/vimfiles/bundle')
 else
@@ -74,8 +76,6 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-haml'
 
 " javascript
-"Plug 'jelera/vim-javascript-syntax'
-Plug 'wangxd18/JavaScript-Indent'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ramitos/jsctags'
 Plug 'mxw/vim-jsx'
@@ -83,6 +83,8 @@ Plug 'burnettk/vim-angular'
 Plug 'pangloss/vim-javascript'
 
 " not using
+"Plug 'jelera/vim-javascript-syntax'
+"Plug 'wangxd18/JavaScript-Indent'
 "Plug 'sheerun/vim-polyglot' " polyglot is breaking some filetype syntax
 "Plug 'junegunn/vim-easy-align'
 
