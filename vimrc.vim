@@ -337,8 +337,8 @@ nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <silent> <leader>q :bdelete<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
 vnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <c-tab> :bnext<cr>
-vnoremap <silent> <c-tab> :bnext<cr>
+nnoremap <silent> <c-tab> :bprev<cr>
+vnoremap <silent> <c-tab> :bprev<cr>
 nnoremap <silent> <leader>bp :bprevious<cr>
 vnoremap <silent> <leader>bp :bprevious<cr>
 nnoremap <silent> <leader>bu :bunload<cr>
