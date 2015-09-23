@@ -496,6 +496,7 @@ noremap <leader>tr :TernRefs<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn|tmp)|dist|images)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg|sw.*)$',
