@@ -18,14 +18,14 @@ endsnippet
 
 snippet for "for (...) {...} (counting up)" b
 for (let ${1:i} = 0; $1 < ${2:Things}.length; ++ $1) {
-	let item = $2[$1];
+	const item = $2[$1];
 	${VISUAL}$0
 }
 endsnippet
 
 snippet ford "for (...) {...} (counting up)" b
 for (let ${1:i} = ${2:Things}.length - 1; $1 >= 0; -- $1) {
-	let item = $2[$1];
+	const item = $2[$1];
 	${VISUAL}$0
 }
 endsnippet
@@ -35,7 +35,7 @@ snippet l "Lambda in ES6: Arrow Function" w
 endsnippet
 
 snippet fn "Function assigned to let"
-let ${1:fn} = (${2:x}) => {
+const ${1:fn} = (${2:x}) => {
 	${VISUAL}$0
 };
 endsnippet

@@ -79,7 +79,6 @@ Plug 'tpope/vim-haml'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ramitos/jsctags'
 Plug 'mxw/vim-jsx'
-Plug 'burnettk/vim-angular'
 Plug 'pangloss/vim-javascript'
 
 " not using
