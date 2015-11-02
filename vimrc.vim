@@ -111,8 +111,8 @@ call plug#end()
 "Helptags
 
 if has("mac")
-  " ~/local/chelaile as default workspace
-  cd ~/local/chelaile
+  " ~/local as default workspace
+  cd ~/local
 endif
 
 noremap , ;
