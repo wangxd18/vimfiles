@@ -81,6 +81,9 @@ Plug 'ramitos/jsctags'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 
+" xhp
+Plug 'mxw/vim-xhp'
+
 " not using
 "Plug 'jelera/vim-javascript-syntax'
 "Plug 'sheerun/vim-polyglot' " polyglot is breaking some filetype syntax
