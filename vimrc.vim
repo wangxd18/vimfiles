@@ -100,12 +100,7 @@ function! BuildYCM(info)
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-function! InstallTern(info)
-  if a:info.status == 'installed' || a:info.force
-    !npm install
-  endif
-endfunction
-Plug 'marijnh/tern_for_vim' , { 'do': function('InstallTern') }
+Plug 'facebook/vim-flow'
 
 " Add plugins to &runtimepath
 call plug#end()
