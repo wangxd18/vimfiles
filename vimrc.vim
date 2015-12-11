@@ -46,7 +46,6 @@ Plug 'bling/vim-airline'
 Plug 'raichoo/haskell-vim'
 Plug 'wangxd18/ultisnips'
 Plug 'groenewege/vim-less'
-Plug 'airblade/vim-gitgutter'
 Plug 'jtratner/vim-flavored-markdown'
 Plug 'nelstrom/vim-markdown-preview'
 Plug 'vim-scripts/matchit.zip'
@@ -59,11 +58,9 @@ Plug 'rstacruz/sparkup'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'svermeulen/vim-easyclip'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TagHighlight'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -199,24 +196,13 @@ set sidescroll=1
 
 "分割窗口时保持相等的宽/高
 
-set nobackup
-set noswapfile
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
-
+"set nobackup
+"set noswapfile
 set writebackup
-if exists("&undofile")
-  if has("win32") || has("win64")
-    set undodir=$VIMBACKUP,$TEMP,.
-    set backupdir=$VIMBACKUP,$TEMP,.
-  else
-    set undodir=$HOME/.vimbackup
-    set backupdir=$HOME/.vimbackup
-  endif
-  set undofile
-endif
-set directory=.,$TEMP
+set backupdir=~/tmp/backup//
+set directory=~/tmp/swap//
+set undodir=~/tmp/undo//
+set undofile
 
 "搜索忽略大小写
 set ignorecase
@@ -526,17 +512,6 @@ nnoremap <leader>tb :Tabularize /=
 vnoremap <leader>tb :Tabularize /=
 nnoremap <leader>tbz :Tabularize /:\zs<left><left><left>
 vnoremap <leader>tbz :Tabularize /:\zs<left><left><left>
-
-" Fugitive Git commands
-set diffopt+=vertical
-noremap <leader>gd :Gdiff<cr>
-noremap <leader>gc :Gcommit -a <cr>
-noremap <leader>gm :Gmerge  <left>
-"noremap <leader>gl :cclose<cr>:Gpull <cr>:copen<cr>
-"noremap <leader>gp :cclose<cr>:Gpush <cr>:copen<cr>
-noremap <leader>gst :Gstatus<cr>
-"noremap <leader>glg :Glog --graph --color --decorate --all<cr>
-noremap <leader>gbl :Gblame<cr>
 
 
 "Automatically fitting a quickfix window height
