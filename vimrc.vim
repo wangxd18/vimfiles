@@ -34,7 +34,6 @@ Plug 'kristijanhusak/vim-hybrid-material'
 
 "vim functional plugins
 Plug 'rking/ag.vim'
-Plug 'Shougo/vimshell.vim'
 Plug 'scrooloose/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/bufexplorer.zip'
@@ -43,11 +42,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
-Plug 'raichoo/haskell-vim'
+"Plug 'raichoo/haskell-vim'
 Plug 'wangxd18/ultisnips'
 Plug 'groenewege/vim-less'
-Plug 'jtratner/vim-flavored-markdown'
-Plug 'nelstrom/vim-markdown-preview'
+"Plug 'jtratner/vim-flavored-markdown'
+"Plug 'nelstrom/vim-markdown-preview'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/mru.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -59,11 +58,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-dispatch'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TagHighlight'
-Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'nathanaelkane/vim-indent-guides'
 
 " html
 Plug 'othree/html5.vim'
@@ -97,7 +95,7 @@ function! BuildYCM(info)
 endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-Plug 'facebook/vim-flow'
+Plug 'flowtype/vim-flow'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -232,7 +230,7 @@ if has("gui_running")
 	if has("win32") || has("win64")
     set guifont=Monaco:h12:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
-    set guifont=Monaco:h14
+    set guifont=Monaco:h16
   else
     if has("gui_gtk2")
       set guifont=Monaco:h12,Consolas:h12
@@ -565,3 +563,6 @@ augroup resCur
     autocmd BufWinEnter * call ResCur()
   endif
 augroup END
+
+"Flow
+let g:flow#enable = 0
