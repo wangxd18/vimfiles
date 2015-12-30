@@ -76,6 +76,9 @@ Plug 'ramitos/jsctags'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 
+" Hack
+Plug 'bmcgavin/hack-vim'
+
 " xhp
 Plug 'mxw/vim-xhp'
 
@@ -93,7 +96,7 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
 
 Plug 'flowtype/vim-flow'
 
@@ -300,6 +303,7 @@ nnoremap <leader>3 :set filetype=php<cr>
 nnoremap <leader>4 :set filetype=css<cr>
 
 map Q <Nop>
+map K <Nop>
 
 inoremap jk <esc>
 "inoremap <esc> <nop>
@@ -315,7 +319,6 @@ nnoremap <leader>v V`]
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "buffer
-nnoremap <silent> <leader>q :bdelete<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
 vnoremap <silent> <leader>bn :bnext<cr>
 nnoremap <silent> <c-tab> :bprev<cr>
@@ -331,6 +334,7 @@ vnoremap <silent> <leader>bd :bdelete<cr>
 nnoremap <leader>wv <c-w>v<c-w>l
 nnoremap <leader>wc <c-w>c
 nnoremap <leader>wo <c-w>o
+nnoremap <silent> <leader>q :close<cr>
 
 "窗口调整
 nnoremap <leader>wh <c-w>H
@@ -431,6 +435,7 @@ let g:ycm_complete_in_comments = 1
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 set completeopt-=preview
+let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
 
 " delimitMate
 " enable expansion
@@ -566,3 +571,8 @@ augroup END
 
 "Flow
 let g:flow#enable = 0
+
+"XHP
+autocmd FileType php setlocal iskeyword+=:,-
+
+
