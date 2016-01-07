@@ -34,7 +34,8 @@ Plug 'kristijanhusak/vim-hybrid-material'
 
 "vim functional plugins
 Plug 'rking/ag.vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+Plug 'cep21/syntasticarc' "https://fb.facebook.com/groups/186093421431695/290554350985601/
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/ctags.vim'
@@ -72,12 +73,13 @@ Plug 'tpope/vim-haml'
 
 " javascript
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'ramitos/jsctags'
+"Plug 'ramitos/jsctags'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'flowtype/vim-flow'
 
 " Hack
-Plug 'bmcgavin/hack-vim'
+Plug 'hhvm/vim-hack'
 
 " xhp
 Plug 'mxw/vim-xhp'
@@ -87,18 +89,7 @@ Plug 'mxw/vim-xhp'
 "Plug 'sheerun/vim-polyglot' " polyglot is breaking some filetype syntax
 "Plug 'junegunn/vim-easy-align'
 
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !./install.py
-  endif
-endfunction
 Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
-
-Plug 'flowtype/vim-flow'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -124,7 +115,7 @@ set noshowmode
 set ambiwidth=double
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
+"set autoread                    "Reload files changed outside vim
 set equalalways
 set autochdir
 
@@ -194,15 +185,12 @@ set sidescrolloff=15
 set sidescroll=1
 
 
-
-"分割窗口时保持相等的宽/高
-
 "set nobackup
 "set noswapfile
 set writebackup
-set backupdir=~/tmp/backup//
-set directory=~/tmp/swap//
-set undodir=~/tmp/undo//
+set backupdir=~/.tmp/vim.backup//
+set directory=~/.tmp/vim.swap//
+set undodir=~/.tmp/vim.undo//
 set undofile
 
 "搜索忽略大小写
@@ -233,7 +221,7 @@ if has("gui_running")
 	if has("win32") || has("win64")
     set guifont=Monaco:h12:cANSI,Consolas:h12:cANSI
 	elseif has("mac")
-    set guifont=Monaco:h16
+    set guifont=Monaco:h14
   else
     if has("gui_gtk2")
       set guifont=Monaco:h12,Consolas:h12
@@ -414,7 +402,7 @@ let g:EasyClipUsePasteToggleDefaults       = 0
 if has("win32") || has("win64")
   let g:EasyClipShareYanksDirectory = $VIMBACKUP
 else
-  let g:EasyClipShareYanksDirectory = "~/.vimbackup"
+  let g:EasyClipShareYanksDirectory = &backupdir
 endif
 
 " Airline
@@ -427,7 +415,7 @@ nnoremap <leader>a :Ag  <left>
 
 "MRU
 nnoremap <silent> <leader>fm :MRU<cr>
-let MRU_File = $HOME."/.vimbackup/.vim_mru_files"
+let MRU_File = &backupdir."/.vim_mru_files"
 let MRU_Max_Entries = 2000
 
 "YouCompleteMe options
@@ -460,23 +448,27 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " Syntastic settings
-let g:syntastic_javascript_checkers      = ['eslint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list            = 1
-let g:syntastic_check_on_open            = 1
-let g:syntastic_check_on_wq              = 0
-let g:syntastic_loc_list_height          = 5
-let g:syntastic_mode_map = {
-        \ "mode": "passive",
-        \ "passive_filetypes": ["javascript"] }
-noremap <leader>sc :SyntasticCheck<cr>
-noremap <leader>st :SyntasticToggleMode<cr>
-noremap <silent> <leader>ln :lnext<cr>
-noremap <silent> <leader>lp :lprev<cr>
+"let g:syntastic_javascript_checkers      = ['eslint']
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list            = 1
+"let g:syntastic_check_on_open            = 1
+"let g:syntastic_check_on_wq              = 0
+"let g:syntastic_loc_list_height          = 5
+"let g:syntastic_mode_map = {
+        "\ "mode": "passive",
+        "\ "passive_filetypes": ["javascript"] }
+"noremap <leader>sc :SyntasticCheck<cr>
+"noremap <leader>st :SyntasticToggleMode<cr>
+"noremap <silent> <leader>ln :lnext<cr>
+"noremap <silent> <leader>lp :lprev<cr>
 
 " TernJs settings
-noremap <leader>td :TernDef<cr>
-noremap <leader>tr :TernRefs<cr>
+"noremap <leader>td :TernDef<cr>
+"noremap <leader>tr :TernRefs<cr>
+
+"syntasticarc
+set makeprg=syntasticarc
+set errorformat=%f:%l:%c:%t:%m
 
 " CtrlP setting
 let g:ctrlp_map = '<c-p>'
@@ -505,10 +497,11 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 " javascript-libraries-syntax
-let g:used_javascript_libs = 'angularjs,angularuirouter,react'
+let g:used_javascript_libs = 'react'
 
 " Add some shortcuts for ctags
 map <Leader>tt <esc>:TagbarToggle<cr>
+set tags=tags;/
 
 "Tabular
 nnoremap <leader>tb :Tabularize /=
@@ -572,7 +565,11 @@ augroup END
 "Flow
 let g:flow#enable = 0
 
-"XHP
+"Hack and XHP
 autocmd FileType php setlocal iskeyword+=:,-
+nnoremap <leader>hd :HackSearch<cr>
+nnoremap <leader>ht :HackType<cr>
+nnoremap <leader>hm :HackMake<cr>
+nnoremap <leader>hr :HackFindRefs
 
 
