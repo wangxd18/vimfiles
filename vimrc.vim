@@ -1,18 +1,4 @@
-"For Windows:
-"set env_var $MYVIMRC to this file
-"add 'source $MYVIMRC' into the vimrc file
-"set env_var $CUSTOMVIMRUNTIME to the vimfiles path
-"set env_var $VIMBACKUP to backup/undofile path. if not set, the default is $TEMP
-"
-"For Linux:
-"use install.sh to set symbolic link to the vim configuration
-
 set nocompatible
-
-"if has("win32") || has("win64")
-  "set runtimepath=$CUSTOMVIMRUNTIME,$VIMRUNTIME,$CUSTOMVIMRUNTIME/after
-"endif
-
 
 " vim-plug
 " https://github.com/junegunn/vim-plug
@@ -29,7 +15,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 "Plug 'tomasr/molokai'
 "Plug 'yosiat/oceanic-next-vim'
 "Plug 'mhumeSF/one-dark.vim'
-"Plug 'gosukiwi/vim-atom-dark'
+Plug 'wangxd18/vim-atom-dark'
 "Plug 'altercation/vim-colors-solarized'
 
 "vim functional plugins
@@ -42,7 +28,9 @@ Plug 'vim-scripts/ctags.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'godlygeek/tabular'
 Plug 'kien/ctrlp.vim'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'edkolev/tmuxline.vim'
 "Plug 'raichoo/haskell-vim'
 Plug 'wangxd18/ultisnips'
 Plug 'groenewege/vim-less'
@@ -62,7 +50,6 @@ Plug 'tpope/vim-endwise'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/TagHighlight'
-"Plug 'nathanaelkane/vim-indent-guides'
 
 " html
 Plug 'othree/html5.vim'
@@ -86,8 +73,6 @@ Plug 'mxw/vim-xhp'
 
 " not using
 "Plug 'jelera/vim-javascript-syntax'
-"Plug 'sheerun/vim-polyglot' " polyglot is breaking some filetype syntax
-"Plug 'junegunn/vim-easy-align'
 
 Plug 'Valloric/YouCompleteMe', { 'frozen': 1 }
 
@@ -97,9 +82,11 @@ call plug#end()
 
 "Helptags
 
+"set default workspace
 if has("mac")
-  " ~/local as default workspace
   cd ~/local
+elseif has('unix')
+  cd ~/www
 endif
 
 noremap , ;
@@ -115,7 +102,7 @@ set noshowmode
 set ambiwidth=double
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
-"set autoread                    "Reload files changed outside vim
+set autoread                    "Reload files changed outside vim
 set equalalways
 set autochdir
 
@@ -145,9 +132,11 @@ set t_Co=256
 " colorscheme
 set background=dark
 "colorscheme molokai
-"let g:hybrid_use_Xresources = 1
+let g:hybrid_use_Xresources = 1
 "colorscheme OceanicNext
-colorscheme hybrid_material
+"colorscheme hybrid_material
+"colorscheme solarized
+colorscheme atom-dark-256
 
 
 set number
@@ -318,6 +307,9 @@ vnoremap <silent> <leader>bu :bunload<cr>
 nnoremap <silent> <leader>bd :bdelete<cr>
 vnoremap <silent> <leader>bd :bdelete<cr>
 
+" toggle paste mode
+set pastetoggle=<c-t>
+
 "窗口
 nnoremap <leader>wv <c-w>v<c-w>l
 nnoremap <leader>wc <c-w>c
@@ -391,19 +383,10 @@ noremap <leader>ss :Scratch<cr>
 "jsbeautify
 "keymapp setted as <leader>jf
 
-"EasyClip
-noremap <leader>yr :Yanks<cr>
-let g:EasyClipShareYanks                   = 1
-let g:EasyClipShareYanksFile               = '.easyclip'
-let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
-let g:EasyClipYankHistorySize              = 1000
-let g:EasyClipAutoFormat                   = 1
-let g:EasyClipUsePasteToggleDefaults       = 0
-if has("win32") || has("win64")
-  let g:EasyClipShareYanksDirectory = $VIMBACKUP
-else
-  let g:EasyClipShareYanksDirectory = &backupdir
-endif
+"EasyMotion
+noremap <C-o> <nop>
+imap ;w <C-o><leader><leader>w
+imap ;b <C-o><leader><leader>b
 
 " Airline
 let g:airline_theme = 'hybrid'
@@ -563,11 +546,16 @@ augroup resCur
 augroup END
 
 "Flow
-let g:flow#enable = 0
+let g:flow#enable=1
+let g:flow#autoclose=1
+nnoremap <leader>ft :HackType<cr>
+nnoremap <leader>fr :HackFindRefs
+
 
 "Hack and XHP
 autocmd FileType php setlocal iskeyword+=:,-
 nnoremap <leader>hd :HackSearch<cr>
+nnoremap <leader>hs :HackSearch<cr>
 nnoremap <leader>ht :HackType<cr>
 nnoremap <leader>hm :HackMake<cr>
 nnoremap <leader>hr :HackFindRefs
