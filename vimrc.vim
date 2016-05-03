@@ -416,7 +416,7 @@ let g:delimitMate_expand_cr = 2
 "better whitespace
 "auto strip whitespace on save
 "let g:strip_whitespace_on_save = 1
-highlight ExtraWhitespace ctermbg = green guibg = #AFFD46i
+highlight ExtraWhitespace ctermbg = green guibg = #AFFD46
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
